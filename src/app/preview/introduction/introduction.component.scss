@@ -1,0 +1,97 @@
+.header {
+  position: relative;
+  background-image: url("src/assets/images/img.png");
+  height: 90vh;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+
+  .nav {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0px 0px;
+    .navheading{
+      flex:2;
+    }
+._navItems{
+  flex:1;
+}
+    .item{
+  padding:20px;
+      margin-top:10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+    .title {
+      font-size: xxx-large;
+    }
+  }
+}
+
+.container {
+  position: absolute;
+  bottom: 10;
+  right: 0;
+}
+
+._imageContainer {
+  height: 500px;
+  width: 500px;
+
+  ._image {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.container2 {
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  ._moto {
+    font-size: 5rem;
+
+    ._moto_icon {
+      font-size: 6rem;
+    }
+  }
+
+  ._para {
+    font-size: 3rem;
+  }
+}
+
+.stepsContainer {
+  text-align: center;
+
+  ._cntP {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    ._cntC{
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      padding:16px;
+      vertical-align: middle;
+    }
+._arP {
+ width:60px;
+  margin: 180px auto;
+  height:50px;
+  ._ar {
+    width: 100%;
+    height: 100%;
+  }
+}
+  }
+}
+
+
