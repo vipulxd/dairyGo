@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "minecraft";
+  src: local("minecraft"), url(./assets/font/Minecrafter.Reg.ttf) format("truetype");
+}
+* {
+  font-family: 'minecraft';
+  font-weight:300;
+  font-size:large;
+}
+.container{
+  padding:10px;
+  background-color: #fafa8f;
+}
