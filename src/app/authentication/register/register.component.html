@@ -4,21 +4,23 @@
 
     <div class="cnt-shadow wrapper">
       <div class="di">
-        <div class="tag">NAME</div>
-        <div class="in"><input type="name"></div>
-        <div class="tag">PHONE</div>
-        <div class="in"><input type="tel"></div>
+          <div class="warning-box" > {{this.error}}</div>
+        <div class="tag"> FIRST NAME</div>
+        <div class="in"><input #Fname type="name" name="firstName" (keyup)="onUpdate(Fname)"></div>
+        <div class="tag">LAST NAME</div>
+        <div class="in"><input #Lname type="name" name="lastName" (keyup)="onUpdate(Lname)"></div>
 
         <div class="tag">EMAIL</div>
-        <div class="in"><input type="address"></div>
+        <div class="in"><input #Email type="email" name="email" (keyup)="onUpdate(Email)"></div>
 
         <div class="tag">PASSWORD</div>
-        <div class="in"><input type="password"></div>
+        <div class="in"><input #Password type="password" name="password" (keyup)="onUpdate(Password)"></div>
 
 
         <div class="btn-wrapper">
           <div class="bu">
-            <button type="submit"><sa-spinner-dotted color="black"></sa-spinner-dotted></button>
+            <button type="submit" *ngIf="!loading" (click)="register()">Register</button>
+              <button type="submit" *ngIf="loading"><sa-spinner-dotted color="black"></sa-spinner-dotted></button>
           </div>
           <div class="bu">
             <button type="submit"><a routerLink="/auth/login">Already Registerd ?</a></button>

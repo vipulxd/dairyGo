@@ -1,0 +1,1 @@
+<div class="wallpaper"></div>

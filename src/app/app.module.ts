@@ -11,17 +11,22 @@ import {LoginComponent} from "./authentication/login/login.component";
 import {RegisterComponent} from "./authentication/register/register.component";
 import {ShellRoutingModule} from "./shell/shell-routing.module";
 import {SpinnerDottedModule} from "spinners-angular/spinner-dotted";
+import {DashbaordComponent} from "./shell/dashbaord/dashbaord.component";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
+
     IntroductionComponent,
     AuthComponent,
     LoginComponent,
     RegisterComponent,
+      DashbaordComponent
   ],
   imports: [
     BrowserModule,
+      HttpClientModule,
     PreviewRoutingModule,
     AuthenticationRoutingModule,
     ShellRoutingModule,
