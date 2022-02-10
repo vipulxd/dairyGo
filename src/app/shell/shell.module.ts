@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ShellRoutingModule } from './shell-routing.module';
-import { DashbaordComponent } from './dashbaord/dashbaord.component';
 
+import { NgpImagePickerModule } from 'ngp-image-picker';
 
 @NgModule({
-  declarations: [DashbaordComponent],
+  declarations: [],
   imports: [
     CommonModule,
-    ShellRoutingModule
+    ShellRoutingModule,NgpImagePickerModule
   ]
 })
 export class ShellModule { }
