@@ -1,0 +1,99 @@
+.uWrapper {
+
+  width: 80vw;
+  text-align: center;
+  margin: 0 auto;
+
+
+  ._wrapper {
+    height: 80vh
+
+  }
+
+  .title {
+    font-size: xxx-large;
+  }
+
+  .infoWrapper {
+    padding: 20px;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .heading {
+    h2 {
+      font-size: x-large;
+    }
+  }
+}
+
+.userDetails {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  justify-content: space-evenly;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.tag {
+  margin: 18px;
+}
+
+.userImage {
+  display: flex;
+  flex-direction: column;
+}
+
+.userimage {
+
+  height: 300px;
+  width: 100%;
+
+  .image {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.picker {
+  margin: 0 auto;
+
+  input {
+    outline: none;
+    width: 100px;
+  }
+
+  max-width: 100px;
+}
+
+.btnsave {
+  margin: 20px;
+}
+
+.cattleInfo {
+  span {
+    background-color: #fafa8f;
+  }
+}
+
+.check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    margin-left: 10px;
+  }
+
+  margin: 10px;
+
+}

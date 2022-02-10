@@ -13,6 +13,7 @@ import {ShellRoutingModule} from "./shell/shell-routing.module";
 import {SpinnerDottedModule} from "spinners-angular/spinner-dotted";
 import {DashbaordComponent} from "./shell/dashbaord/dashbaord.component";
 import { HttpClientModule } from '@angular/common/http';
+import {UserSetupComponent} from "./shell/user-setup/user-setup.component";
 
 @NgModule({
   declarations: [
@@ -22,16 +23,19 @@ import { HttpClientModule } from '@angular/common/http';
     AuthComponent,
     LoginComponent,
     RegisterComponent,
-      DashbaordComponent
+      DashbaordComponent,
+    UserSetupComponent,
   ],
   imports: [
+
     BrowserModule,
-      HttpClientModule,
+    HttpClientModule,
     PreviewRoutingModule,
     AuthenticationRoutingModule,
     ShellRoutingModule,
     SpinnerDottedModule,
     AppRoutingModule,
+
 
   ],
   providers: [],

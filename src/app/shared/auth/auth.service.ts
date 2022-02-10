@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
 })
 export class AuthService {
     error: EventEmitter<any> = new EventEmitter();
+    private serverUrl = 'http://15.207.18.171:4001/'
     constructor(private _http: HttpClient ,
     private router : Router
     ) {}
@@ -28,7 +29,7 @@ public authorize(){
                 password: data.password,
             }
             JSON.stringify(userDetails)
-            this._http.post<ResponseType>('http://localhost:4001/register', userDetails).subscribe(
+            this._http.post<ResponseType>(`${this.serverUrl}register`, userDetails).subscribe(
                 response => {
                     localStorage.setItem('token',response.token)
                     this.authorize();
@@ -47,7 +48,7 @@ public authorize(){
                 password: d.password
             }
             JSON.stringify(userDetails)
-            this._http.post<ResponseType>('http://localhost:4001/login', userDetails).subscribe(
+            this._http.post<ResponseType>(`${this.serverUrl}login`, userDetails).subscribe(
                 res  => {
                     localStorage.setItem('token',res.token)
                     this.authorize();

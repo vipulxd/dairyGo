@@ -3,84 +3,121 @@
   font-family: "rowdies";
   src: local("rowdies"), url(./assets/Rowdies/Rowdies-Regular.ttf) format("truetype");
 }
-body{
+
+body {
   margin: 0px;
-  background-image: linear-gradient(to right,rgba(250,250,250,0) 50%, rgba(251,251,251,1) );
+  background-image: linear-gradient(to right, rgba(250, 250, 250, 0) 50%, rgba(251, 251, 251, 1));
 }
+
 * {
   font-family: 'rowdies';
-  font-weight:lighter;
-  font-size:large;
+  font-weight: lighter;
+  font-size: large;
 }
-.bg-yellow{
+
+.bg-yellow {
   background-color: #fafa8f;
 }
-.cnt-shadow{
-    box-shadow:
-            0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-            0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-            0 12.5px 10px rgba(0, 0, 0, 0.06),
-            0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-            0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-            0 100px 80px rgba(0, 0, 0, 0.12)
-  ;
+
+.cnt-shadow {
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12);
 
 
-
-    min-height: 200px;
+  min-height: 200px;
 
   border-radius: 5px;
 
 }
-a{
+
+a {
   text-decoration: none;
-  color:inherit;
+  color: inherit;
 }
-.wallpaper{
+
+body {
   background-image: url("src/assets/images/img.png");
   height: 100vh;
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
 }
-.bu{
-  button{
-    height:50px;
-    min-width:150px;
-    border:none;
+
+.wallpaper {
+  height: 100vh;
+}
+
+.bu {
+  button {
+    height: 50px;
+    min-width: 150px;
+    border: none;
     border-radius: 6px;
     background-color: #fafa8f;
-    margin:4px;
-    box-shadow:
-      0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-      0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-      0 12.5px 10px rgba(0, 0, 0, 0.06),
-      0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-      0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-      0 100px 80px rgba(0, 0, 0, 0.12)
-  ;
+    margin: 4px;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
 
   }
 }
-.in{
-  input{
-    height:40px;
-    width:100%;
-    border:none;
-    box-shadow:
-      0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-      0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-      0 12.5px 10px rgba(0, 0, 0, 0.06),
-      0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-      0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-      0 100px 80px rgba(0, 0, 0, 0.12)
 
-  ;
+.in {
+  input {
+    height: 40px;
+    width: 100%;
+    border: none;
+    outline-color: #fafa8f;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
     border-radius: 4px;
+
   }
+
 }
-.warning-box{
-  border:1px;
+
+.warning-box {
+  border: 1px;
   background-color: #e09898;
-  padding:0px 30px;
+  padding: 0px 30px;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+* {
+  //border: 1px solid black;
+}
+
+input[type=file]::file-selector-button {
+  height: 40px;
+  width: 100%;
+  background-color: #fafa8f;
+  font-family: inherit;
+  border-radius: 6px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12);
+
+
+}
+
+input:focus {
+  border: 1px solid #fafa8f !important;
+  outline: none;
 }
