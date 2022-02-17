@@ -14,11 +14,14 @@ import {SpinnerDottedModule} from "spinners-angular/spinner-dotted";
 import {DashbaordComponent} from "./shell/dashbaord/dashbaord.component";
 import { HttpClientModule } from '@angular/common/http';
 import {UserSetupComponent} from "./shell/user-setup/user-setup.component";
+import {LoaderComponent} from "./shell/loader/loader.component";
+import {SpinnerCircularModule} from "spinners-angular/spinner-circular";
+import {SpinnerCircularSplitModule} from "spinners-angular/spinner-circular-split";
 
 @NgModule({
   declarations: [
     AppComponent,
-
+LoaderComponent,
     IntroductionComponent,
     AuthComponent,
     LoginComponent,
@@ -35,6 +38,8 @@ import {UserSetupComponent} from "./shell/user-setup/user-setup.component";
     ShellRoutingModule,
     SpinnerDottedModule,
     AppRoutingModule,
+    SpinnerCircularModule,
+    SpinnerCircularSplitModule,
 
 
   ],

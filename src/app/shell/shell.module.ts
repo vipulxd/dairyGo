@@ -5,6 +5,7 @@ import { ShellRoutingModule } from './shell-routing.module';
 
 import { NgpImagePickerModule } from 'ngp-image-picker';
 
+
 @NgModule({
   declarations: [],
   imports: [

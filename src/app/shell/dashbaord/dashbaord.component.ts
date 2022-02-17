@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../shared/auth/auth.service";
+import {CoreService} from "../../shared/core.service";
 
 @Component({
   selector: 'app-dashbaord',
@@ -7,11 +8,44 @@ import {AuthService} from "../../shared/auth/auth.service";
   styleUrls: ['./dashbaord.component.scss']
 })
 export class DashbaordComponent implements OnInit {
+  public isVerified: boolean;
+  public isSubscribed: boolean;
+  public _id: string;
+  public isLoading: boolean;
 
-  constructor(private _authService : AuthService) { }
+  constructor(private _authService: AuthService,
+              private _coreService: CoreService
+  ) {
+  }
 
   ngOnInit() {
-      this._authService.authorize();
+    this._id = localStorage.getItem('id')
+    this._coreService.isLoading.subscribe(val=>{
+     this.isLoading = val;
+   })
+    this._coreService.loadProfile();
+    this._coreService.data.subscribe(
+      res => {
+        this.processData(res);
+      },
+      err => {
+        this.isLoading = true
+      }
+    )
   }
+
+
+  public processData(res) {
+    this.isVerified = res.response.isVerified;
+
+  }
+}
+
+interface ResponseInterface {
+  isVerified: boolean;
+  _id: string,
+  first_name: string,
+  last_name: string,
+  email: string,
 
 }

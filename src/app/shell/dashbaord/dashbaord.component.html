@@ -1,8 +1,7 @@
 <div class="wallpaper">
 
-
-
-<app-user-setup></app-user-setup>
-
-
+<app-loader ></app-loader>
+<ng-template *ngIf="!isVerified">
+<app-user-setup ></app-user-setup>
+</ng-template>
 </div>
