@@ -17,6 +17,7 @@ export class AuthService {
 
   // User Registration service
   public register(data: UserInterface) {
+    this.loading.emit(true)
     if (data) {
       const userDetails = {
         firstName: data.firstName,
@@ -27,6 +28,7 @@ export class AuthService {
       JSON.stringify(userDetails)
       this._http.post<ResponseType>(`${this.serverUrl}register`, userDetails).subscribe(
         response => {
+          this.loading.emit(false)
           this.setLocalItem(response)
 
         },
@@ -40,10 +42,23 @@ export class AuthService {
   public setLocalItem(res: ResponseType) {
     localStorage.setItem('token', res.token)
     localStorage.setItem('id', res._id)
+    this.loading.emit(false)
     this.router.navigate(['/dashboard']);
   }
+  public logout() {
+this.loading.emit(true)
+    localStorage.clear()
 
+    if(localStorage.getItem('token') == null ){
+      setTimeout(()=>{
+        this.loading.emit(false)
+        this.router.navigate(['/'])
+      },2000)
+    }
+
+  }
   public login(d) {
+    this.loading.emit(true)
     if (d) {
       const userDetails = {
         email: d.email,
@@ -53,7 +68,8 @@ export class AuthService {
       this._http.post<ResponseType>(`${this.serverUrl}login`, userDetails).subscribe(
         res => {
           this.setLocalItem(res)
-          this.loading.emit(false)
+
+
         },
         err => {
           this.error.next(err)

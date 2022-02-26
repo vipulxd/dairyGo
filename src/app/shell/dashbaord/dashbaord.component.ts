@@ -8,7 +8,7 @@ import {CoreService} from "../../shared/core.service";
   styleUrls: ['./dashbaord.component.scss']
 })
 export class DashbaordComponent implements OnInit {
-  public isVerified: boolean;
+  public isVerified: boolean = true;
   public isSubscribed: boolean;
   public _id: string;
   public isLoading: boolean;
@@ -36,8 +36,11 @@ export class DashbaordComponent implements OnInit {
 
 
   public processData(res) {
-    this.isVerified = res.response.isVerified;
+this.isVerified = res.response
 
+  }
+  public logout(){
+    this._authService.logout()
   }
 }
 

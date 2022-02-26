@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CoreService} from "../../shared/core.service";
+import {AuthService} from "../../shared/auth/auth.service";
 
 @Component({
   selector: 'app-loader',
@@ -8,10 +9,11 @@ import {CoreService} from "../../shared/core.service";
 })
 export class LoaderComponent implements OnInit {
 public isLoading : boolean;
-  constructor(private _coreService : CoreService) { }
+  constructor(private _authService : AuthService  ) { }
 
   ngOnInit() {
-    this._coreService.isLoading.subscribe(val =>{
+    this._authService.loading.subscribe(val =>{
+      console.log(val)
       this.isLoading = val;
     })
   }

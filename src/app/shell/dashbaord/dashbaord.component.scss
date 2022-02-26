@@ -1,0 +1,61 @@
+.d-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+
+  .d-profile {
+    flex: 1
+  }
+
+  .d-modal {
+    flex: 4
+  }
+
+  .d-profile {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+    height: 90vh;
+    margin-left: 10px;
+    justify-content: space-evenly;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+}
+
+.userimage {
+
+  height: 300px;
+  width: 100%;
+
+  .image {
+    height: 100%;
+    width: 100%;
+  }
+}
+.bu{
+  text-align: center;
+}
+
+.verifiedImage {
+
+  height: 40px;
+  width: 40px;
+
+  .image {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.nameBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

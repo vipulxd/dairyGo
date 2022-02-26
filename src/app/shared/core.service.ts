@@ -7,10 +7,11 @@ import {Router} from "@angular/router";
   providedIn: 'root'
 })
 export class CoreService {
-  public _isVerified: boolean;
+  public validationServerUrl = 'http://15.207.18.171:4002/api/cow/userinfo'
+  public _isVerified: Object;
   public _isSubscribed: boolean;
   public data = new Subject();
-  public validationServerUrl = 'http://15.207.18.171:4002/api/cow/userinfo'
+
   public _id: string;
   public isLoading = new EventEmitter();
   public _token : string;
@@ -29,7 +30,6 @@ export class CoreService {
     return
   }
 
-
   loadProfile() {
     const token = this.authorize();
     if( token != null) {
@@ -47,7 +47,7 @@ export class CoreService {
         }
       )
     }else {
-      this.router.navigate(['/mmauth','login'])
+      this.router.navigate(['/auth','login'])
     }
 
 
@@ -57,7 +57,9 @@ public processError(err){
     const status = err.status;
     switch(status){
       case 401: {
+        this.isLoading.emit(true)
         localStorage.clear();
+        this.isLoading.emit(false)
         this.router.navigate(['/auth','login'])
       }
         break;
@@ -65,7 +67,7 @@ public processError(err){
 
 }
 public updateProfile(d) {
-  console.log(d)
+this.isLoading.emit(true)
   if (d) {
     const data = {
       name:d.name,
@@ -79,10 +81,12 @@ public updateProfile(d) {
 
     const headers = new HttpHeaders().set('x-access-token', this._token)
     this._http.post(`${this.validationServerUrl}/${this._id}`, data, {headers}).subscribe(
-      res => {
-        console.log(res);
+      res=> {
+        this._isVerified =  res
+       this.isLoading.emit(false)
       },
       err => {
+        this.isLoading.emit(false)
         console.log(err);
       }
     )
