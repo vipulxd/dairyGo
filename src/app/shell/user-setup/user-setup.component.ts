@@ -9,6 +9,8 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./user-setup.component.scss']
 })
 export class UserSetupComponent implements OnInit {
+  public cow : boolean  =false;
+  public  calf : boolean = true
  public name : string;
  public address : string;
  public pincode : number;
@@ -16,11 +18,20 @@ export class UserSetupComponent implements OnInit {
  public cows : number;
  public buffalos: number;
  public goats : number ;
+ public email : string;
   constructor(
     private _coreServices : CoreService
   ) { }
 acceptedUserAggrement : boolean = false
   ngOnInit() {
+  }
+  public toogleCalf(){
+    this.cow = false;
+    this.calf =  true;
+  }
+  public  toogleCow(){
+    this.calf  =false
+    this.cow =  true
   }
   public config1: ImagePickerConf = {
     borderRadius: '16px',
@@ -47,18 +58,32 @@ switch (name){
     break;
   case 'goats': this.goats = d.value;
     break;
+  case 'email' : this.email = d.value
 }
 }
-public saveData(){
-   const data ={
-     address:this.address,
-     name:this.name,
-     pincode:this.pincode,
-     mobileNo:this.mobileNo,
-     cows:this.cows,
-     buffalos:this.buffalos,
-     goats:this.goats,
+public saveCowData(){
+   var data ;
+   if(this.cow){
+     data ={
+       address:this.address,
+       name:this.name,
+       pincode:this.pincode,
+       mobileNo:this.mobileNo,
+       cows:this.cows,
+       buffalos:this.buffalos,
+       goats:this.goats,
+     }
+     this._coreServices.updateProfile(data,'cow')
+   }else {
+     data ={
+       address:this.address,
+       name:this.name,
+       pincode:this.pincode,
+       mobileNo:this.mobileNo,
+       email:this.email,
+     }
+     this._coreServices.updateProfile(data,'calf')
    }
-   this._coreServices.updateProfile(data)
+
 }
 }

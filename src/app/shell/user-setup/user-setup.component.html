@@ -1,7 +1,11 @@
 <div class="uWrapper">
   <div class="navheading"><h1 class="title">dairyGo</h1></div>
   <div class="_wrapper cnt-shadow bg-white">
-    <div class="infoWrapper">
+    <div class="selectBox">
+      <div  class="bu"><button (click)="toogleCow()" [ngClass]="cow ? '':'active'" >I want to SELL</button></div>
+      <div class="bu"><button (click)="toogleCalf()" [ngClass]="calf ? '':'active'">I want to BUY</button></div>
+    </div>
+    <div *ngIf="cow" class="infoWrapper">
       <div class="heading">
         <h2>Please fill some details</h2>
 
@@ -41,8 +45,22 @@
         </div>
       </div>
       <div class="bu btn-wrapper btnsave">
-        <button [disabled]="!acceptedUserAggrement" (click)="saveData()">Save</button>
+        <button [disabled]="!acceptedUserAggrement" (click)="saveCowData()">Save</button>
       </div>
+    </div>
+
+    <div *ngIf="calf" class="c-wrapper">
+      <div class="tag">NAME</div>
+      <div class="in"><input #NAME  type="name" (keyup)="onChange(NAME)" required  name="name"></div>
+      <div class="tag">ADDRESS</div>
+      <div class="in"><input required #ADDRESS (keyup)="onChange(ADDRESS)" type="email" name="address"></div>
+      <div class="tag">PINCODE</div>
+      <div class="in"><input required #PINCODE (keyup)="onChange(PINCODE)" type="number" name="pincode"></div>
+      <div class="tag">PHONE NO.</div>
+      <div class="in"><input required #MOBILE (keyup)="onChange(MOBILE)" type="tel" name="mobileNo"></div>
+      <div class="tag">EMAIL</div>
+      <div class="in"><input required type="email" #EMAIL (keyup)="onChange(EMAIL)" name="email"></div>
+      <div class="bu"><button (click)="saveCowData()">SAVE</button></div>
     </div>
   </div>
 </div>

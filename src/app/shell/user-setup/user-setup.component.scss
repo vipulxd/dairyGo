@@ -6,8 +6,9 @@
 
 
   ._wrapper {
-    height: 80vh
-
+    height:100%;
+margin:10px;
+    padding: 20px 0px;
   }
 
   .title {
@@ -76,7 +77,7 @@
 }
 
 .btnsave {
-  margin: 20px;
+  margin: 10px;
 }
 
 .cattleInfo {
@@ -96,4 +97,20 @@
 
   margin: 10px;
 
+}
+.selectBox{
+  display: flex;
+  justify-content:space-around ;
+}
+.active {
+background-color: black;
+  color:white
+}
+.c-wrapper{
+width:50%;
+
+ display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+margin: 0 auto;
 }
