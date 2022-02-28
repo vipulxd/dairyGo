@@ -9,23 +9,23 @@
       <div class="userDetails">
         <div class="userInfo">
           <div class="tag">NAME</div>
-          <div class="in"><input  type="email" name="email"></div>
+          <div class="in"><input #Name  type="name" (keyup)="onChange(Name)" name="name"></div>
           <div class="tag">ADDRESS</div>
-          <div class="in"><input type="email" name="email"></div>
+          <div class="in"><input #Address type="text"  (keyup)="onChange(Address)" name="address"></div>
           <div class="tag">PINCODE</div>
-          <div class="in"><input type="number" name="email"></div>
+          <div class="in"><input #Pincode type="number" name="pincode" required (keyup)="onChange(Pincode)"></div>
           <div class="tag">PHONE NO.</div>
-          <div class="in"><input type="tel" name="email"></div>
+          <div class="in"><input #MobileNo type="tel" name="mobileNo" (keyup)="onChange(MobileNo)"></div>
 
 
         </div>
         <div class="cattleInfo">
           <div class="tag">How many <span>Cows</span> you have ?</div>
-          <div class="in"><input  type="number" value="0" name="email"></div>
+          <div class="in"><input #NoOfCows type="number" value="0" name="cows" (keyup)="onChange(NoOfCows)"></div>
           <div class="tag">How many <span>Buffalos </span> you have ?</div>
-          <div class="in"><input  type="number" value="0" name="email"></div>
+          <div class="in"><input #NoOfBuffalos type="number" value="0" name="buffalos" (keyup)="onChange(NoOfBuffalos)"></div>
           <div class="tag">How many <span>Goats</span> you have ?</div>
-          <div class="in"><input  type="number" value="0" name="email"></div>
+          <div class="in"><input #NoOfGoats   type="number" value="0" name="goats" (keyup)="onChange(NoOfGoats)"></div>
         </div>
         <div class="userImage">
           <div class="userimage">
@@ -41,7 +41,7 @@
         </div>
       </div>
       <div class="bu btn-wrapper btnsave">
-        <button [disabled]="!acceptedUserAggrement">Save</button>
+        <button [disabled]="!acceptedUserAggrement" (click)="saveData()">Save</button>
       </div>
     </div>
   </div>

@@ -4,7 +4,7 @@ import {DashbaordComponent} from "./dashbaord/dashbaord.component";
 
 
 const routes: Routes = [
-    {path:'dashboard', component: DashbaordComponent}
+    {path:'dashboard', component: DashbaordComponent }
 ];
 
 @NgModule({

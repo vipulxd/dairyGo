@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit} from '@angular/core';
 import {AuthService} from "../../shared/auth/auth.service";
 
 @Component({
@@ -9,23 +9,19 @@ import {AuthService} from "../../shared/auth/auth.service";
 export class LoginComponent implements OnInit {
     public email: string;
     public password: string;
-    public loading: boolean;
+    public loading: EventEmitter<boolean>;
 public error : any ;
-    constructor(private _authService: AuthService) {
-        this._authService.error.subscribe(
-            error=>{
-                this.error = error.error;
-                if(this.error){
-                    this.loading = false;
-                }
-
-            }
-        )
-    }
+    constructor(private _authService: AuthService) {}
 
     ngOnInit() {
-        this._authService.authorize();
-        this.loading = false;
+      this._authService.authorize()
+
+      this._authService.loading.subscribe(
+          val =>{
+            this.loading = val
+          }
+        );
+
     }
 
     onUpdate(details) {
@@ -40,7 +36,6 @@ public error : any ;
     }
 
     public login() {
-        this.loading = true
         if (this.email && this.password) {
             const data = {
                 email: this.email,
