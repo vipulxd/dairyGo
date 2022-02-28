@@ -8,9 +8,10 @@ import {Router} from "@angular/router";
 })
 export class CoreService {
   public validationServerUrl = 'http://15.207.18.171:4002/api/cow/userinfo'
-  public _isVerified: Object;
+  // public validationServerUrl = 'http://localhost:4002/api/cow/userinfo'
+  public _isVerified: boolean = false;
   public _isSubscribed: boolean;
-  public data = new Subject();
+  public data = new Subject();s
 
   public _id: string;
   public isLoading = new EventEmitter();
@@ -33,7 +34,6 @@ export class CoreService {
   loadProfile() {
     const token = this.authorize();
     if( token != null) {
-      this.isLoading.emit(true)
       const headers = new HttpHeaders().set('x-access-token', token)
       this._http.get(`${this.validationServerUrl}/${this._id}`, {headers}).subscribe(
         data => {
@@ -41,7 +41,6 @@ export class CoreService {
           this.isLoading.emit(false)
         },
         error => {
-          console.log(error)
           this.processError(error)
           this.data.error(error)
         }
@@ -82,8 +81,7 @@ this.isLoading.emit(true)
     const headers = new HttpHeaders().set('x-access-token', this._token)
     this._http.post(`${this.validationServerUrl}/${this._id}`, data, {headers}).subscribe(
       res=> {
-        this._isVerified =  res
-       this.isLoading.emit(false)
+this.loadProfile()
       },
       err => {
         this.isLoading.emit(false)

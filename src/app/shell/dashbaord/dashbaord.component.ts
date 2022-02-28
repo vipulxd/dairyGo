@@ -9,46 +9,49 @@ import {CoreService} from "../../shared/core.service";
 })
 export class DashbaordComponent implements OnInit {
   public isVerified: boolean = true;
-  public isSubscribed: boolean;
-  public _id: string;
   public isLoading: boolean;
-
+  public userInfo ;
+  public name : string;
+  public phoneNo: string;
+  public  userAddress : string;
   constructor(private _authService: AuthService,
               private _coreService: CoreService
   ) {
   }
 
   ngOnInit() {
-    this._id = localStorage.getItem('id')
-    this._coreService.isLoading.subscribe(val=>{
-     this.isLoading = val;
-   })
-    this._coreService.loadProfile();
+   this.isLoading = true
+    this._coreService.loadProfile()
     this._coreService.data.subscribe(
       res => {
         this.processData(res);
+        this.userInfo =  res;
+        this.loadProfile()
       },
       err => {
         this.isLoading = true
       }
     )
   }
+public loadProfile(){
+  this.name = this.userInfo.response.first_name + this.userInfo.response.last_name
+  this.phoneNo = this.userInfo.response.mobileNo;
+  this.userAddress = this.userInfo.response.address;
 
 
+}
   public processData(res) {
-this.isVerified = res.response
+    if(res.response.isVerified)  {
+      this.isVerified =  true
+
+      this.isLoading = false
+    }else {
+      this.isVerified = false
+      this.isLoading = false
+    }
 
   }
   public logout(){
     this._authService.logout()
   }
-}
-
-interface ResponseInterface {
-  isVerified: boolean;
-  _id: string,
-  first_name: string,
-  last_name: string,
-  email: string,
-
 }

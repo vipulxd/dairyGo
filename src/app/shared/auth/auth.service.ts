@@ -14,10 +14,14 @@ export class AuthService {
   ) {
     this.loading.emit(true)
   }
+  public authorize(){
+    if(localStorage.getItem('token') != null && localStorage.getItem('id') != null){
+     this.router.navigate(['/dashboard'])
+    }
+  }
 
   // User Registration service
   public register(data: UserInterface) {
-    this.loading.emit(true)
     if (data) {
       const userDetails = {
         firstName: data.firstName,
@@ -28,9 +32,7 @@ export class AuthService {
       JSON.stringify(userDetails)
       this._http.post<ResponseType>(`${this.serverUrl}register`, userDetails).subscribe(
         response => {
-          this.loading.emit(false)
           this.setLocalItem(response)
-
         },
         err => {
           this.error.next(err)
@@ -45,15 +47,17 @@ export class AuthService {
     this.loading.emit(false)
     this.router.navigate(['/dashboard']);
   }
+
+  // User login
   public logout() {
-this.loading.emit(true)
+    this.loading.emit(true)
     localStorage.clear()
 
-    if(localStorage.getItem('token') == null ){
-      setTimeout(()=>{
+    if (localStorage.getItem('token') == null) {
+      setTimeout(() => {
         this.loading.emit(false)
         this.router.navigate(['/'])
-      },2000)
+      }, 2000)
     }
 
   }
@@ -68,8 +72,6 @@ this.loading.emit(true)
       this._http.post<ResponseType>(`${this.serverUrl}login`, userDetails).subscribe(
         res => {
           this.setLocalItem(res)
-
-
         },
         err => {
           this.error.next(err)

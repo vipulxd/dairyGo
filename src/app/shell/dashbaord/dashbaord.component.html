@@ -1,25 +1,29 @@
 <div class="wallpaper">
 
-<app-loader ></app-loader>
-<div *ngIf="!isVerified else profile">
-<app-user-setup ></app-user-setup>
-</div>
-  <ng-template #profile>
-<div class="d-wrapper">
-<div class="d-profile">
-  <div class="userimage"><img class="image" src="assets/images/default-image.png" alt="profile-image"></div>
-  <div class="nameBox"><div><h1>Aman Srivastava</h1></div><div class="verifiedImage"><img class="image" src="assets/images/verified.png" alt="verified-icon"></div></div>
-  <div ><h1>9877221211</h1></div>
-  <div ><h1>Rail vihar , Vasundhra Near Starbucks</h1></div>
-  <div ><h1>Some More Details</h1></div>
-  <div class="bu"><button (click)="logout()">Sign Out</button> </div>
-</div>
-  <div class="d-modal">
-   <div class="d-info-wrapper">
-<app-subscribers></app-subscribers>
+  <app-loader></app-loader>
+  <div *ngIf="!isVerified then appsetup ; else profile">  </div>
+   <ng-template #appsetup ><app-user-setup></app-user-setup></ng-template>
 
-   </div>
-  </div>
-</div>
+  <ng-template #profile>
+    <div class="d-wrapper">
+      <div class="d-profile">
+        <div class="userimage"><img class="image" src="assets/images/default-image.png" alt="profile-image"></div>
+        <div class="nameBox">
+          <div><h1>{{name }}</h1></div>
+          <div class="verifiedImage"><img class="image" src="assets/images/verified.png" alt="verified-icon"></div>
+        </div>
+        <div><h1>{{phoneNo}}</h1></div>
+        <div><h1>{{userAddress}}</h1></div>
+        <div class="bu">
+          <button (click)="logout()">Sign Out</button>
+        </div>
+      </div>
+      <div class="d-modal">
+        <div class="d-info-wrapper">
+          <app-subscribers></app-subscribers>
+
+        </div>
+      </div>
+    </div>
   </ng-template>
 </div>

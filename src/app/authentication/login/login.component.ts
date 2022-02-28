@@ -14,11 +14,14 @@ public error : any ;
     constructor(private _authService: AuthService) {}
 
     ngOnInit() {
-         this._authService.loading.subscribe(
+      this._authService.authorize()
+
+      this._authService.loading.subscribe(
           val =>{
             this.loading = val
           }
         );
+
     }
 
     onUpdate(details) {

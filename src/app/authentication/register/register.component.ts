@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-
+this._authService.authorize()
   }
 public onUpdate(d){
    switch(d.name) {

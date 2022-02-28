@@ -4,8 +4,11 @@
   display: flex;
   flex-direction: row;
 
+
   .d-profile {
-    flex: 1
+    flex: 1;
+    align-self: center;
+
   }
 
   .d-modal {
