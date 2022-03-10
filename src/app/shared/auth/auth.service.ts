@@ -12,11 +12,11 @@ export class AuthService {
   constructor(private _http: HttpClient,
               private router: Router,
   ) {
-    this.loading.emit(true)
   }
   public authorize(){
     if(localStorage.getItem('token') != null && localStorage.getItem('id') != null){
-     this.router.navigate(['/dashboard'])
+      const type  = localStorage.getItem('TYPE')
+      this.processUser(type)
     }
   }
 
@@ -35,7 +35,7 @@ export class AuthService {
           this.setLocalItem(response)
         },
         err => {
-          this.error.next(err)
+          this.error.next(err.error.res)
         }
       )
     }
@@ -44,15 +44,33 @@ export class AuthService {
   public setLocalItem(res: ResponseType) {
     localStorage.setItem('token', res.token)
     localStorage.setItem('id', res._id)
-    this.loading.emit(false)
-    this.router.navigate(['/dashboard']);
+    localStorage.setItem('TYPE',res.type)
+    this.processUser(res.type)
+
+  }
+
+  private processUser(type:String){
+    console.log(type)
+    switch(type){
+      case 'PENDING':{
+        this.router.navigate(['setup'])
+    break;
+      }
+      case  'CALF' :{
+        this.router.navigate(['calf'])
+        break;
+      }
+      case 'COW':{
+        this.router.navigate(['cow'])
+      break;
+      }
+    }
   }
 
   // User login
   public logout() {
-    this.loading.emit(true)
+    // this.loading.emit(true)
     localStorage.clear()
-
     if (localStorage.getItem('token') == null) {
       setTimeout(() => {
         this.loading.emit(false)
@@ -62,7 +80,7 @@ export class AuthService {
 
   }
   public login(d) {
-    this.loading.emit(true)
+    // this.loading.emit(true)
     if (d) {
       const userDetails = {
         email: d.email,
@@ -74,8 +92,8 @@ export class AuthService {
           this.setLocalItem(res)
         },
         err => {
-          this.error.next(err)
-          this.loading.emit(false)
+          this.error.next(err.error.res)
+          // this.loading.emit(false)
         }
       )
 
@@ -97,7 +115,7 @@ interface ResponseType {
   email: string,
   password: string,
   __v: number,
-  token: string
-
+  token: string,
+type:string
 
 }

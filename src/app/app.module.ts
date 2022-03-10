@@ -22,27 +22,12 @@ import {SubscribersComponent} from "./shell/dashbaord/subscribers/subscribers.co
 @NgModule({
   declarations: [
     AppComponent,
-    LoaderComponent,
-    IntroductionComponent,
-    LoginComponent,
-    RegisterComponent,
-    DashbaordComponent,
-    SubscribersComponent,
-    UserSetupComponent,
   ],
   imports: [
-
+SpinnerDottedModule,
     BrowserModule,
     HttpClientModule,
-    PreviewRoutingModule,
-    AuthenticationRoutingModule,
-    ShellRoutingModule,
-    SpinnerDottedModule,
-    AppRoutingModule,
-    SpinnerCircularModule,
-    SpinnerCircularSplitModule,
-
-
+    AppRoutingModule
 
   ],
   providers: [],

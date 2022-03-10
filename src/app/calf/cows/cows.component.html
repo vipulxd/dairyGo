@@ -1,0 +1,12 @@
+<div class="heading"><h1>You have {{amount}}  COWs near you </h1></div>
+<div class="cardWrapper">
+
+  <div class="card"  *ngFor="let data of data.res">
+    <div><h1>{{data.first_name | uppercase}}</h1></div>
+    <div><h2>{{data.address}}</h2></div>
+    <div><h2>{{data.email}}</h2></div>
+    <div><h2>{{data.mobileNo}}</h2></div>
+<div class="bu"><button (click)="subscribeToCow(data._id)">SUBSCRIBE</button></div>
+  </div>
+
+</div>

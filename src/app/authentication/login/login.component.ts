@@ -10,7 +10,7 @@ export class LoginComponent implements OnInit {
     public email: string;
     public password: string;
     public loading: EventEmitter<boolean>;
-public error : any ;
+public error : string ;
     constructor(private _authService: AuthService) {}
 
     ngOnInit() {
@@ -21,7 +21,8 @@ public error : any ;
             this.loading = val
           }
         );
-
+this._authService.error.subscribe(data => this.error = data
+)
     }
 
     onUpdate(details) {

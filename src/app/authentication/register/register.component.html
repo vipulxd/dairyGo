@@ -19,8 +19,7 @@
 
         <div class="btn-wrapper">
           <div class="bu">
-            <button type="submit" *ngIf="!loading" (click)="register()">Register</button>
-              <button type="submit" *ngIf="loading"><sa-spinner-circular-split color="black"></sa-spinner-circular-split></button>
+            <button type="submit" (click)="register()">Register</button>
           </div>
           <div class="bu">
             <button type="submit"><a routerLink="/auth/login">Already Registerd ?</a></button>

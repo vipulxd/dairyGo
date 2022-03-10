@@ -1,15 +1,18 @@
+
 <div class="uWrapper">
   <div class="navheading"><h1 class="title">dairyGo</h1></div>
   <div class="_wrapper cnt-shadow bg-white">
-    <div class="infoWrapper">
+    <div class="selectBox">
+      <div  class="bu"><button (click)="toogleCow()" [ngClass]="cow ? '':'active'" >I want to SELL</button></div>
+      <div class="bu"><button (click)="toogleCalf()" [ngClass]="calf ? '':'active'">I want to BUY</button></div>
+    </div>
+    <div *ngIf="cow" class="infoWrapper">
       <div class="heading">
         <h2>Please fill some details</h2>
 
       </div>
       <div class="userDetails">
         <div class="userInfo">
-          <div class="tag">NAME</div>
-          <div class="in"><input #Name  type="name" (keyup)="onChange(Name)" name="name"></div>
           <div class="tag">ADDRESS</div>
           <div class="in"><input #Address type="text"  (keyup)="onChange(Address)" name="address"></div>
           <div class="tag">PINCODE</div>
@@ -20,12 +23,11 @@
 
         </div>
         <div class="cattleInfo">
-          <div class="tag">How many <span>Cows</span> you have ?</div>
+          <div class="tag">How much <span> Cows </span> milk your farm produce?</div>
           <div class="in"><input #NoOfCows type="number" value="0" name="cows" (keyup)="onChange(NoOfCows)"></div>
-          <div class="tag">How many <span>Buffalos </span> you have ?</div>
+          <div class="tag">How much <span> Buffalos </span> milk your farm produce ?</div>
           <div class="in"><input #NoOfBuffalos type="number" value="0" name="buffalos" (keyup)="onChange(NoOfBuffalos)"></div>
-          <div class="tag">How many <span>Goats</span> you have ?</div>
-          <div class="in"><input #NoOfGoats   type="number" value="0" name="goats" (keyup)="onChange(NoOfGoats)"></div>
+
         </div>
         <div class="userImage">
           <div class="userimage">
@@ -41,8 +43,18 @@
         </div>
       </div>
       <div class="bu btn-wrapper btnsave">
-        <button [disabled]="!acceptedUserAggrement" (click)="saveData()">Save</button>
+        <button [disabled]="!acceptedUserAggrement" (click)="saveCowData()">Save</button>
       </div>
+    </div>
+
+    <div *ngIf="calf" class="c-wrapper">
+      <div class="tag">ADDRESS</div>
+      <div class="in"><input required #ADDRESS (keyup)="onChange(ADDRESS)" type="email" name="address"></div>
+      <div class="tag">PINCODE</div>
+      <div class="in"><input required #PINCODE (keyup)="onChange(PINCODE)" type="number" name="pincode"></div>
+      <div class="tag">PHONE NO.</div>
+      <div class="in"><input required #MOBILE (keyup)="onChange(MOBILE)" type="tel" name="mobileNo"></div>
+      <div class="bu btnbtn"><button (click)="saveCowData()">SAVE</button></div>
     </div>
   </div>
 </div>
