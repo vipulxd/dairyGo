@@ -1,3 +1,4 @@
+
 <div class="uWrapper">
   <div class="navheading"><h1 class="title">dairyGo</h1></div>
   <div class="_wrapper cnt-shadow bg-white">
@@ -12,8 +13,6 @@
       </div>
       <div class="userDetails">
         <div class="userInfo">
-          <div class="tag">NAME</div>
-          <div class="in"><input #Name  type="name" (keyup)="onChange(Name)" name="name"></div>
           <div class="tag">ADDRESS</div>
           <div class="in"><input #Address type="text"  (keyup)="onChange(Address)" name="address"></div>
           <div class="tag">PINCODE</div>
@@ -24,12 +23,11 @@
 
         </div>
         <div class="cattleInfo">
-          <div class="tag">How many <span>Cows</span> you have ?</div>
+          <div class="tag">How much <span> Cows </span> milk your farm produce?</div>
           <div class="in"><input #NoOfCows type="number" value="0" name="cows" (keyup)="onChange(NoOfCows)"></div>
-          <div class="tag">How many <span>Buffalos </span> you have ?</div>
+          <div class="tag">How much <span> Buffalos </span> milk your farm produce ?</div>
           <div class="in"><input #NoOfBuffalos type="number" value="0" name="buffalos" (keyup)="onChange(NoOfBuffalos)"></div>
-          <div class="tag">How many <span>Goats</span> you have ?</div>
-          <div class="in"><input #NoOfGoats   type="number" value="0" name="goats" (keyup)="onChange(NoOfGoats)"></div>
+
         </div>
         <div class="userImage">
           <div class="userimage">
@@ -50,17 +48,13 @@
     </div>
 
     <div *ngIf="calf" class="c-wrapper">
-      <div class="tag">NAME</div>
-      <div class="in"><input #NAME  type="name" (keyup)="onChange(NAME)" required  name="name"></div>
       <div class="tag">ADDRESS</div>
       <div class="in"><input required #ADDRESS (keyup)="onChange(ADDRESS)" type="email" name="address"></div>
       <div class="tag">PINCODE</div>
       <div class="in"><input required #PINCODE (keyup)="onChange(PINCODE)" type="number" name="pincode"></div>
       <div class="tag">PHONE NO.</div>
       <div class="in"><input required #MOBILE (keyup)="onChange(MOBILE)" type="tel" name="mobileNo"></div>
-      <div class="tag">EMAIL</div>
-      <div class="in"><input required type="email" #EMAIL (keyup)="onChange(EMAIL)" name="email"></div>
-      <div class="bu"><button (click)="saveCowData()">SAVE</button></div>
+      <div class="bu btnbtn"><button (click)="saveCowData()">SAVE</button></div>
     </div>
   </div>
 </div>

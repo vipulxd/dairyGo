@@ -12,11 +12,11 @@ export class RegisterComponent implements OnInit {
  public email : string;
  public password: string;
     public loading :boolean = false;
-    public error  :any;
+    public error  :string;
   constructor( public _authService : AuthService) {
       this._authService.error.subscribe(
           error=>{
-              this.error = error.error;
+              this.error = error;
               if(this.error){
                   this.loading = false;
               }
