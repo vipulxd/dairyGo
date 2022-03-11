@@ -27,6 +27,7 @@ export class CoreService {
 
 
   verifyProfile() {
+    this.isLoading.next(true)
     const token = localStorage.getItem('token')
     const _id = localStorage.getItem('id')
     const type = localStorage.getItem('TYPE')
@@ -42,6 +43,7 @@ export class CoreService {
         error => {
           this.processError(error)
           this.data.error(error)
+          this.isLoading.next(false)
         }
       )
     } else if (token !== null && type == 'PENDING') {
@@ -54,6 +56,7 @@ export class CoreService {
         error => {
           this.processError(error)
           this.data.error(error)
+          this.isLoading.next(false)
         }
       )
     } else {
@@ -62,6 +65,7 @@ export class CoreService {
   }
 
   public validateProfile(data) {
+    this.isLoading.next(false)
     switch (data.res.type) {
       case 'PENDING': {
         this.router.navigate(['setup'])
@@ -100,6 +104,7 @@ export class CoreService {
   }
 
   public updateProfile(d) {
+    this.isLoading.next(true)
     this._id = localStorage.getItem('id')
     this._token = localStorage.getItem('token')
 // this.isLoading.emit(true)
@@ -133,7 +138,7 @@ export class CoreService {
         },
         err => {
           // this.isLoading.emit(false)
-          console.log(err);
+          this.isLoading.next(false)
         }
       )
     }
@@ -149,6 +154,7 @@ export class CoreService {
 
   /* SUBSCRIBE to a cow */
   public subscribeToCow(cowid) {
+    this.isLoading.next(true)
     const id = localStorage.getItem('id')
     this._token = localStorage.getItem('token')
     const type = localStorage.getItem('TYPE')
@@ -163,8 +169,10 @@ export class CoreService {
     JSON.stringify(body)
     this._http.post(`${this.updateVaidationServerUrl}/${type}/subscribe/${cowid}`, body, {headers}).subscribe(data => {
       console.log(data)
+      this.isLoading.next(false)
     },err=>{
       console.log(err)
+      this.isLoading.next(false)
     })
   }
 
@@ -175,7 +183,7 @@ export class CoreService {
     const type = localStorage.getItem('TYPE')
 
     const headers = new HttpHeaders().set('x-access-token', this._token)
-return this._http.get(`${this.updateVaidationServerUrl}/${type}/find/all/${id}`,{headers})
+    return this._http.get(`${this.updateVaidationServerUrl}/${type}/find/all/${id}`,{headers})
   }
 
 }
