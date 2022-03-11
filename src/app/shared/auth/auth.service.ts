@@ -22,6 +22,7 @@ export class AuthService {
 
   // User Registration service
   public register(data: UserInterface) {
+    this.loading.emit(true)
     if (data) {
       const userDetails = {
         firstName: data.firstName,
@@ -36,6 +37,7 @@ export class AuthService {
         },
         err => {
           this.error.next(err.error.res)
+          this.loading.emit(false)
         }
       )
     }
@@ -50,7 +52,7 @@ export class AuthService {
   }
 
   private processUser(type:String){
-    console.log(type)
+    this.loading.emit(false)
     switch(type){
       case 'PENDING':{
         this.router.navigate(['setup'])
@@ -69,7 +71,7 @@ export class AuthService {
 
   // User login
   public logout() {
-    // this.loading.emit(true)
+    this.loading.emit(true)
     localStorage.clear()
     if (localStorage.getItem('token') == null) {
       setTimeout(() => {
@@ -77,10 +79,9 @@ export class AuthService {
         this.router.navigate(['/'])
       }, 2000)
     }
-
   }
   public login(d) {
-    // this.loading.emit(true)
+    this.loading.emit(true)
     if (d) {
       const userDetails = {
         email: d.email,
@@ -92,8 +93,9 @@ export class AuthService {
           this.setLocalItem(res)
         },
         err => {
+
           this.error.next(err.error.res)
-          // this.loading.emit(false)
+          this.loading.emit(false)
         }
       )
 
