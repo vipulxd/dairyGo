@@ -107,12 +107,14 @@ export class CoreService {
     this.isLoading.next(true)
     this._id = localStorage.getItem('id')
     this._token = localStorage.getItem('token')
+    console.log(d)
 // this.isLoading.emit(true)
     if (d) {
       const headers = new HttpHeaders().set('x-access-token', this._token)
       let data
       if (d.type == 'COW') {
         data = {
+          profileImage:d.profileImage,
           address: d.address,
           pincode: d.pincode,
           mobileNo: d.mobileNo,
@@ -123,12 +125,14 @@ export class CoreService {
         }
       } else {
         data = {
+          profileImage:d.profileImage,
           address: d.address,
           pincode: d.pincode,
           mobileNo: d.mobileNo,
           type: d.type
         }
       }
+      console.log(data)
       this._http.post(`${this.updateVaidationServerUrl}/${d.type}/${this._id}`, data, {headers}).subscribe(
         data => {
           const type = data.res.type

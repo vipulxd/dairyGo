@@ -31,9 +31,9 @@
         </div>
         <div class="userImage">
           <div class="userimage">
-            <img class="image" src="/assets/images/default-image.png">
+            <img class="image" src="{{profileImage}}">
           </div>
-          <div class="picker"><input type="file" title=" " accept="image/png, image/jpeg" capture="environment">
+          <div class="picker"><input type="file" (change)="onFileChanged($event)" title=" " accept="image/png, image/jpeg" capture="environment">
           </div>
         </div>
       </div>
@@ -48,6 +48,13 @@
     </div>
 
     <div *ngIf="calf" class="c-wrapper">
+      <div class="userImage">
+        <div class="userrimage">
+          <img class="image" [src]="profileImage">
+        </div>
+        <div class="picker"><input name="profileImage" #IMAGE (change)="onFileChanged($event)" type="file" title=" " accept="image/png, image/jpeg" capture="environment" formenctype="multipart/form-data">
+        </div>
+      </div>
       <div class="tag">ADDRESS</div>
       <div class="in"><input required #ADDRESS (keyup)="onChange(ADDRESS)" type="email" name="address"></div>
       <div class="tag">PINCODE</div>

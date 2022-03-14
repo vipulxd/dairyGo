@@ -21,10 +21,11 @@ public type = "PENDING"
   public buffalos: number;
   public goats : number ;
   public email : string;
-
+public profileImage ;
   acceptedUserAggrement : boolean = false
   ngOnInit() {
     this._coreService.verifyProfile()
+    this.profileImage = '/assets/images/default-image.png';
   }
   public toogleCalf(){
     this.cow = false;
@@ -43,6 +44,7 @@ public type = "PENDING"
     this.acceptedUserAggrement = !this.acceptedUserAggrement
   }
   public onChange(d){
+    console.log(d)
     const name = d.name;
     switch (name){
       case 'address': this.address = d.value;
@@ -55,9 +57,12 @@ public type = "PENDING"
         break;
       case 'buffalos': this.buffalos = d.value;
         break;
+      case 'profileImage' : this.profileImage = d.files[0];
+      break;
     }
   }
   public saveCowData(){
+    console.log(this.profileImage)
     var data ;
     if(this.cow){
       data ={
@@ -67,6 +72,7 @@ public type = "PENDING"
         mobileNo:this.mobileNo,
         cows:this.cows,
         buffalos:this.buffalos,
+        profileImage : this.profileImage,
         type:"COW"
       }
       this._coreService.updateProfile(data)
@@ -77,11 +83,30 @@ public type = "PENDING"
         pincode:this.pincode,
         mobileNo:this.mobileNo,
         email:this.email,
-        type:"CALF"
+        type:"CALF",
+        profileImage:this.profileImage
       }
       this._coreService.updateProfile(data)
     }
 
+  }
+  onFileChanged(event) {
+    const files = event.target.files;
+    if (files.length === 0)
+      return;
+
+    const mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      // this.message = "Only images are supported.";
+      return;
+    }
+
+    const reader = new FileReader();
+    const imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      this.profileImage = reader.result;
+    }
   }
 
 }
