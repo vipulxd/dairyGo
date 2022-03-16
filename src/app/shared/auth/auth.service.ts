@@ -79,6 +79,7 @@ export class AuthService {
         this.router.navigate(['/'])
       }, 2000)
     }
+
   }
   public login(d) {
     this.loading.emit(true)

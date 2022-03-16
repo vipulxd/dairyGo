@@ -10,7 +10,7 @@ import {AuthService} from "../shared/auth/auth.service";
 export class CowComponent implements OnInit {
 public  type : String = "COW"
   public profile ;
-public calfs;
+
   constructor(public _coreService : CoreService,
               public _authService : AuthService
   ) { }
@@ -20,10 +20,6 @@ public calfs;
     this._coreService.data.subscribe(data =>{
       this.profile = data
     })
-this._coreService.getAllCalfs().subscribe(data=>{
-  this.calfs  = data.res;
-  console.log(data)
-})
   }
   public logout(){
     this._authService.logout()

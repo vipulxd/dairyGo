@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CoreService} from "../../shared/core.service";
 
 @Component({
   selector: 'app-calfs',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calfs.component.scss']
 })
 export class CalfsComponent implements OnInit {
-
-  constructor() { }
+  public calfs;
+  constructor(private _coreService : CoreService) { }
 
   ngOnInit() {
+    this._coreService.getAllCalfs().subscribe(data=>{
+      this.calfs  = data.res;
+    })
   }
 
 }
