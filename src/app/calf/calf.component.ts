@@ -17,7 +17,7 @@ public pincode
 
   ngOnInit() {
     this._coreService.verifyProfile()
-    this._coreService.data.subscribe(data  =>{
+    this._coreService.data.subscribe((data : any )  =>{
       this.profile = data
       this.pincode = data.res.pincode
     })

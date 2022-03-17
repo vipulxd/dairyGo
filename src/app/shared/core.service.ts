@@ -10,9 +10,6 @@ export class CoreService {
   // public validationServerUrl = 'http://15.207.18.171:4002/api/cow/userinfo'
   public globalValidationServerUrl = 'http://localhost:4002/api'
   public updateVaidationServerUrl = 'http://localhost:4002/api'
-
-  public _isVerified: boolean = false;
-  public _isSubscribed: boolean;
   public data = new Subject();
   public type: string
   public _id: string;
@@ -34,7 +31,7 @@ export class CoreService {
     if (token !== null && type !== 'PENDING') {
       let headers = new HttpHeaders().set('x-access-token', token)
       this._http.get(`${this.globalValidationServerUrl}/${type}/${_id}`, {headers}).subscribe(
-        data => {
+        (data : any) => {
           this.data.next(data)
           this.name = data.res.first_name;
           this.validateProfile(data)
@@ -51,7 +48,7 @@ export class CoreService {
       this._http.get(`${this.globalValidationServerUrl}/${_id}`, {headers}).subscribe(
         data => {
           this.validateProfile(data)
-          // this.isLoading.emit(false)
+          this.isLoading.emit(false)
         },
         error => {
           this.processError(error)
@@ -134,7 +131,7 @@ export class CoreService {
       }
       console.log(data)
       this._http.post(`${this.updateVaidationServerUrl}/${d.type}/${this._id}`, data, {headers}).subscribe(
-        data => {
+        (data: any) => {
           const type = data.res.type
           localStorage.setItem('TYPE', type)
           this.type = type
@@ -162,7 +159,6 @@ export class CoreService {
     const id = localStorage.getItem('id')
     this._token = localStorage.getItem('token')
     const type = localStorage.getItem('TYPE')
-    console.log(cowid)
     const headers = new HttpHeaders().set('x-access-token', this._token)
     const body = {
       name: this.name,
@@ -170,12 +166,10 @@ export class CoreService {
       sub_id: 2
 
     }
-    JSON.stringify(body)
-    this._http.post(`${this.updateVaidationServerUrl}/${type}/subscribe/${cowid}`, body, {headers}).subscribe(data => {
-      console.log(data)
+
+    this._http.post(`${this.updateVaidationServerUrl}/${type}/subscribe/${cowid}`, body, {headers}).subscribe(() => {
       this.isLoading.next(false)
-    },err=>{
-      console.log(err)
+    },(err)=>{
       this.isLoading.next(false)
     })
   }
