@@ -137,8 +137,7 @@ export class CoreService {
           this.type = type
           this.validateProfile(data)
         },
-        err => {
-          // this.isLoading.emit(false)
+        () => {
           this.isLoading.next(false)
         }
       )
@@ -169,7 +168,7 @@ export class CoreService {
 
     this._http.post(`${this.updateVaidationServerUrl}/${type}/subscribe/${cowid}`, body, {headers}).subscribe(() => {
       this.isLoading.next(false)
-    },(err)=>{
+    },()=>{
       this.isLoading.next(false)
     })
   }
