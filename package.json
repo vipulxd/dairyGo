@@ -19,7 +19,9 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "ngp-image-picker": "^1.5.8",
     "rxjs": "~6.4.0",
+    "spinners-angular": "0.0.5",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },

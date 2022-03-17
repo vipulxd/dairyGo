@@ -1,0 +1,37 @@
+<div class="wallpaper lgWrapper">
+  <div class="panelWrapper">
+
+
+    <div class="cnt-shadow wrapper">
+      <div class="di">
+          <div class="warning-box" > {{this.error}}</div>
+        <div class="tag"> FIRST NAME</div>
+        <div class="in"><input #Fname type="name" name="firstName" (keyup)="onUpdate(Fname)"></div>
+        <div class="tag">LAST NAME</div>
+        <div class="in"><input #Lname type="name" name="lastName" (keyup)="onUpdate(Lname)"></div>
+
+        <div class="tag">EMAIL</div>
+        <div class="in"><input #Email type="email" name="email" (keyup)="onUpdate(Email)"></div>
+
+        <div class="tag">PASSWORD</div>
+        <div class="in"><input #Password type="password" name="password" (keyup)="onUpdate(Password)"></div>
+
+
+        <div class="btn-wrapper">
+          <div class="bu">
+            <button type="submit" (click)="register()">Register</button>
+          </div>
+          <div class="bu">
+            <button type="submit"><a routerLink="/auth/login">Already Registerd ?</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="_imageContainer">
+    <img class="_image" src="./assets/images/cow-eating.png" alt="cowimage">
+  </div>
+
+</div>

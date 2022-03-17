@@ -1,0 +1,40 @@
+.lgWrapper{
+  position: relative;
+}
+.panelWrapper{
+  width:100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  justify-self: center;
+  align-items: center;
+}
+.wrapper{
+  background-color: white;
+  height:60vh;
+
+}
+._imageContainer{
+  width:600px;
+  height:500px;
+  position:absolute;
+  bottom:0;
+  ._image{
+    height:100%;
+    width:100%;
+  }
+}
+.di{
+  margin: 0px 40px;
+  height:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.tag{
+  font-size: x-large;
+}
+.btn-wrapper{
+  display: flex;
+  justify-content: space-between;
+}
