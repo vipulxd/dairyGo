@@ -23,6 +23,7 @@ public pincode
     })
   }
   public logout(){
+  // Remove auth key and clear localStorage
     this._authService.logout()
   }
 
