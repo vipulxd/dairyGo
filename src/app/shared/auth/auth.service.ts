@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 })
 export class AuthService {
   error: EventEmitter<any> = new EventEmitter();
-  private serverUrl = 'http://15.207.18.171:4001/'
+  private serverUrl = 'http://65.2.71.121:4000/'
  loading : EventEmitter<boolean> = new EventEmitter<boolean>();
   constructor(private _http: HttpClient,
               private router: Router,
@@ -52,6 +52,7 @@ export class AuthService {
   }
 
   private processUser(type:String){
+    console.log(type)
     this.loading.emit(false)
     switch(type){
       case 'PENDING':{
@@ -90,11 +91,11 @@ export class AuthService {
       }
       JSON.stringify(userDetails)
       this._http.post<ResponseType>(`${this.serverUrl}login`, userDetails).subscribe(
-        res => {
-          this.setLocalItem(res)
+        (res: any) => {
+          console.log(res.user)
+          this.setLocalItem(res.user)
         },
         err => {
-
           this.error.next(err.error.res)
           this.loading.emit(false)
         }
