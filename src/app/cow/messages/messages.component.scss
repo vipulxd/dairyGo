@@ -6,3 +6,28 @@
   text-align: center;
   font-size: xx-large;
 }
+.messageWrapper{
+  display: flex;
+  cursor: pointer;
+  display: flex;
+ margin-bottom: 4px;
+ padding-bottom: 4px;
+  background-color: #fafa8f;
+  justify-content: space-between;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(10, 10, 10, 0.048),
+  0 12.5px 10px rgba(10, 10, 10, 0.06),
+  0 22.3px 17.9px rgba(10, 10, 10, 0.072),
+  0 41.8px 33.4px rgba(10, 10, 10, 0.086),
+  0 100px 80px rgba(10, 10, 10, 0.12);
+padding: 10px 10px;
+div{
+  text-align: right;
+}
+  border-radius: 5px;
+}
+
+.scroller{
+  height:200px;
+overflow: scroll;
+}

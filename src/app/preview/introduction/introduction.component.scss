@@ -100,4 +100,82 @@ margin-bottom:90px;
 }
   }
 }
-
+.footer{
+  display: flex;
+flex-direction: column;
+}
+.contact{
+  font-size: xxx-large;
+  align-self: center;
+  text-align: center;
+  
+}
+.address{
+  font-size: small;
+  align-self: center;
+  text-align: center;
+color: grey;
+}
+.avail{
+  align-self: center;
+  text-align: center; 
+  margin-top: 20px;
+}
+.image{
+  margin: 90px 80px;
+}
+.previewImage{
+  margin: 10px 50px;
+  h2{
+    font-size: xx-large;
+  }
+  display: flex;
+  .previewImg{
+    width:60%;
+    height:80%;
+    img{
+width:100%;
+  }
+}
+  .intro{
+    width:40%;
+  }
+}
+.previewImage2{
+  margin: 100px 50px;
+  h2{
+    font-size: xx-large;
+  }
+  display: flex;
+  flex-direction: row-reverse;
+  .previewImg{
+    width:60%;
+    height:80%;
+    img{
+width:100%;
+  }
+}
+  .intro{
+    margin : 10px 100px;
+    width:40%;
+  }
+}
+.previewImage3{
+  margin: 100px 50px;
+  h2{
+    font-size: xx-large;
+  }
+  display: flex;
+ 
+  .previewImg{
+    width:60%;
+    height:80%;
+    img{
+width:100%;
+  }
+}
+  .intro{
+    margin : 10px 100px;
+    width:40%;
+  }
+}

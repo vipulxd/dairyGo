@@ -10,6 +10,7 @@ export class CoreService {
   // public validationServerUrl = 'http://15.207.18.171:4002/api/cow/userinfo'
   public globalValidationServerUrl = 'http://localhost:4002/api'
   public updateVaidationServerUrl = 'http://localhost:4002/api'
+  public isSubscribed = new EventEmitter();
   public data = new Subject();
   public type: string
   public _id: string;
@@ -35,9 +36,10 @@ export class CoreService {
           this.data.next(data)
           this.name = data.res.first_name;
           this.validateProfile(data)
-          // this.isLoading.emit(false)
+          this.isSubscribed.emit(data.res.isSubscribed);
         },
         error => {
+          
           this.processError(error)
           this.data.error(error)
           this.isLoading.next(false)
@@ -61,6 +63,7 @@ export class CoreService {
     }
   }
 
+/** VALIDATE a profile type */
   public validateProfile(data) {
     this.isLoading.next(false)
     switch (data.res.type) {
@@ -79,7 +82,7 @@ export class CoreService {
     }
   }
 
-
+/** Process the ERRORS */
   public processError(err) {
     // this.isLoading.emit(true);
     const status = err.status;
@@ -100,12 +103,12 @@ export class CoreService {
 
   }
 
+  /**UPDATE a user either COW or CALF */
   public updateProfile(d) {
     this.isLoading.next(true)
     this._id = localStorage.getItem('id')
     this._token = localStorage.getItem('token')
-    console.log(d)
-// this.isLoading.emit(true)
+    this.isSubscribed = d.isSubscribed;
     if (d) {
       const headers = new HttpHeaders().set('x-access-token', this._token)
       let data
@@ -129,7 +132,6 @@ export class CoreService {
           type: d.type
         }
       }
-      console.log(data)
       this._http.post(`${this.updateVaidationServerUrl}/${d.type}/${this._id}`, data, {headers}).subscribe(
         (data: any) => {
           const type = data.res.type
@@ -167,6 +169,7 @@ export class CoreService {
     }
 
     this._http.post(`${this.updateVaidationServerUrl}/${type}/subscribe/${cowid}`, body, {headers}).subscribe(() => {
+      this.isSubscribed.emit(true)
       this.isLoading.next(false)
     },()=>{
       this.isLoading.next(false)

@@ -11,12 +11,18 @@ export class CalfComponent implements OnInit {
 public type : String =  "CALF"
  public profile ;
 public pincode
-  constructor(private _coreService : CoreService,
+public isSubscribed : Boolean;  
+constructor(private _coreService : CoreService,
   public _authService : AuthService
   ) { }
 
   ngOnInit() {
     this._coreService.verifyProfile()
+    this._coreService.isSubscribed.subscribe(val =>{
+      this.isSubscribed =  val
+    })
+   
+    
     this._coreService.data.subscribe((data : any )  =>{
       this.profile = data
       this.pincode = data.res.pincode

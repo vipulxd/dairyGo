@@ -13,7 +13,8 @@
   </div>
   <div class="d-modal">
     <div class="d-info-wrapper">
-<app-cows pincode="{{profile.res.pincode}}"></app-cows>
+    
+<app-cows *ngIf="!isSubscribed" pincode="{{profile.res.pincode}}"></app-cows>
     </div>
   </div>
 </div>
