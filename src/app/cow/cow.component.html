@@ -2,7 +2,7 @@
   <div class="d-profile">
     <div class="userimage"><img class="image" src="assets/images/default-image.png" alt="profile-image"></div>
     <div class="nameBox">
-      <div><h1>{{profile.res.first_name }}</h1></div>
+      <div><h1>{{profile.res.first_name | uppercase }}</h1></div>
       <div class="verifiedImage"><img class="image" src="assets/images/verified.png" alt="verified-icon"></div>
     </div>
     <div><h1>{{profile.res.email }}</h1></div>
