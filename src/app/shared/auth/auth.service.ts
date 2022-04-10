@@ -34,7 +34,7 @@ export class AuthService {
       JSON.stringify(userDetails)
       this._http.post<ResponseType>(`${this.serverUrl}register`, userDetails).subscribe(
         (response) => {
-          
+
          this.setLocalItem(response.user)
         },
         err => {
@@ -51,8 +51,8 @@ export class AuthService {
     localStorage.setItem('TYPE',res.type)
     this.processUser(res.type)
     }
-    
-  
+
+
 
   private processUser(type:String){
     this.loading.emit(false)
@@ -114,6 +114,7 @@ interface UserInterface {
 }
 
 interface ResponseType {
+  user: any,
   _id: string,
   first_name: string,
   last_name: string,
