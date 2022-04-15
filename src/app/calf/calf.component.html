@@ -7,13 +7,14 @@
     </div>
     <div><h1>{{profile.res.email }}</h1></div>
     <div><h1>{{profile.res.pincode  }}</h1></div>
+    <div><h1>{{profile.res.address  }}</h1></div>
     <div class="bu">
       <button (click)="logout()">Sign Out</button>
     </div>
   </div>
   <div class="d-modal">
     <div class="d-info-wrapper">
-    
+
 <app-cows *ngIf="!isSubscribed" pincode="{{profile.res.pincode}}"></app-cows>
     </div>
   </div>

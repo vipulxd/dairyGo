@@ -11,7 +11,7 @@
         <div class="in"><input #Password  type="password" name="password" (keyup)="onUpdate(Password)"></div>
         <div class="btn-wrapper">
         <div class="bu">
-          <button type="submit" *ngIf="!loading" (click)="login()">Login</button>
+          <button type="submit" *ngIf="!loading" (click)="login()" (keyup.enter)="login()">Login</button>
             <button type="submit" *ngIf="loading"></button>
         </div>
         <div class="bu">
