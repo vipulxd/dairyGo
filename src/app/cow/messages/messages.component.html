@@ -5,11 +5,11 @@
 <div class="scroller">
 <div *ngFor="let item of messeges">
 <div class = " messageWrapper ">
-  
+
 <div class=messageid><h1>{{item.id}}</h1></div>
 <div class=messagename><h1>{{item.name}}</h1></div>
 <div class=message><h1>{{item.lastMessage}}</h1></div>
-<div class="remove" (click)="remover(item.id)">X</div>
+<div class="remove" (click)="remover(item.id)"><mat-icon>close</mat-icon></div>
 </div>
 </div>
 </div>
