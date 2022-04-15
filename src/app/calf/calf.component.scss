@@ -21,7 +21,7 @@
     padding: 20px 40px;
     height: 90vh;
     margin-left: 10px;
-    justify-content: space-evenly;
+    justify-content: space-around;
     text-align: left;
     background: rgb(255, 255, 255);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -61,7 +61,6 @@
 .nameBox {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 }
 .alt {
   button {
