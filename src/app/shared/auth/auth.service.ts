@@ -114,7 +114,7 @@ interface UserInterface {
 }
 
 interface ResponseType {
-  user: any,
+  user: ResponseType,
   _id: string,
   first_name: string,
   last_name: string,
