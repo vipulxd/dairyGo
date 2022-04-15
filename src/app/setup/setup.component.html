@@ -3,8 +3,8 @@
   <div class="navheading"><h1 class="title">dairyGo</h1></div>
   <div class="_wrapper cnt-shadow bg-white">
     <div class="selectBox">
-      <div  class="bu"><button (click)="toogleCow()" [ngClass]="cow ? '':'active'" >I want to SELL</button></div>
-      <div class="bu"><button (click)="toogleCalf()" [ngClass]="calf ? '':'active'">I want to BUY</button></div>
+      <div  class="bu"><button mat-raised-button color="accent" (click)="toogleCow()" [ngClass]="cow ? '':'active'" >I want to SELL</button></div>
+      <div class="bu"><button mat-raised-button color='accent' (click)="toogleCalf()" [ngClass]="calf ? '':'active'">I want to BUY</button></div>
     </div>
     <div *ngIf="cow" class="infoWrapper">
       <div class="heading">
@@ -38,12 +38,13 @@
         </div>
       </div>
       <div class="check">
-        <div><input type="checkbox" (change)="onCheck()"></div>
+        <div class="checkwrapper"><mat-slide-toggle (click)="onCheck()"></mat-slide-toggle>
         <div><p>I agree, that dairyGo will use this data and keep it save under the leagal act of planet earth</p>
         </div>
       </div>
-      <div class="bu btn-wrapper btnsave">
-        <button [disabled]="!acceptedUserAggrement" (click)="saveCowData()">Save</button>
+        <div class="bu btn-wrapper btnsave">
+          <button mat-raised-button color="accent" [disabled]="!acceptedUserAggrement" (click)="saveCowData()">Save</button>
+        </div>
       </div>
     </div>
 
@@ -59,9 +60,9 @@
       <div class="in"><input required #ADDRESS (keyup)="onChange(ADDRESS)" type="email" name="address"></div>
       <div class="tag">PINCODE</div>
       <div class="in"><input required #PINCODE (keyup)="onChange(PINCODE)" type="number" name="pincode"></div>
-      <div class="tag">PHONE NO.</div>
+      <div class="tag">CONTACT NUMBER</div>
       <div class="in"><input required #MOBILE (keyup)="onChange(MOBILE)" type="tel" name="mobileNo"></div>
-      <div class="bu btnbtn"><button (click)="saveCowData()">SAVE</button></div>
+      <div class="bu btnbtn"><button mat-raised-button color="accent" (click)="saveCowData()">SAVE</button></div>
     </div>
   </div>
 </div>

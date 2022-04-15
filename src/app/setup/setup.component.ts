@@ -39,7 +39,6 @@ public profileImage ;
     borderRadius: '16px',
     language: 'en',
   };
-  initialImage = 'https://havanatursa.com/assets/images/carousel/Hoteles.webp';
   public onCheck(){
     this.acceptedUserAggrement = !this.acceptedUserAggrement
   }
