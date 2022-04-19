@@ -1,18 +1,4 @@
-<div class="d-wrapper">
-  <div class="d-profile">
-    <div class="userimage"><img class="image" src="assets/images/default-image.png" alt="profile-image"></div>
-    <div class="nameBox">
-      <div><h1>{{profile.res.first_name | uppercase }}</h1></div>
-      <div class="verifiedImage"><img class="image" src="assets/images/verified.png" alt="verified-icon"></div>
-    </div>
-    <div><h1>{{profile.res.email }}</h1></div>
-    <div><h1>{{profile.res.pincode}}</h1></div>
-    <div><h1>{{profile.res.address}}</h1></div>
-    <div class="bu">
-      <button mat-raised-button color="accent" (click)="logout()">Sign Out</button>
-    </div>
-  </div>
-  <div class="d-modal">
+<div class="d-modal">
 
 
 <app-calfs></app-calfs>
@@ -22,4 +8,4 @@
 
 
   </div>
-</div>
+

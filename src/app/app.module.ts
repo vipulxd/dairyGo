@@ -5,14 +5,20 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {SpinnerDottedModule} from "spinners-angular/spinner-dotted";
 import {HttpClientModule} from '@angular/common/http';
+import {MatButtonModule} from "@angular/material/button";
+import { NavbarComponent } from './shell/navbar/navbar.component';
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
   ],
   imports: [
 SpinnerDottedModule,
     BrowserModule,
+    MatButtonModule,
+    MatIconModule,
     HttpClientModule,
     AppRoutingModule
 

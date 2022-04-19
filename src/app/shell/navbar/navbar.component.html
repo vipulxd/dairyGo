@@ -1,0 +1,17 @@
+<div class="d-wrapper" *ngIf="isAuthenticated">
+<div class="d-profile">
+  <div class="userimage"><img class="image" src="assets/images/default-image.png" alt="profile-image"></div>
+  <div class="nameBox">
+    <div><h1>{{profile.res.first_name | uppercase }}</h1></div>
+    <div class="verifiedImage"><img class="image" src="assets/images/verified.png" alt="verified-icon"></div>
+  </div>
+  <div><h1>{{profile.res.email }}</h1></div>
+  <div><h1>{{profile.res.pincode}}</h1></div>
+  <div><h1>{{profile.res.address}}</h1></div>
+  <div class="test"><mat-icon>message</mat-icon><b>MESSAGE</b></div>
+  <div class="test"><mat-icon>vpn_key</mat-icon><b>BILLINGS</b></div>
+  <div class="test"><mat-icon>message</mat-icon><b>MESSAGE</b></div>
+  <div class="test" (click)="logout()"><mat-icon>clear</mat-icon><b>SIGN OUT</b>
+  </div>
+</div>
+</div>
