@@ -11,6 +11,7 @@ export class CoreService {
   public globalValidationServerUrl = 'http://localhost:4002/api'
   public updateVaidationServerUrl = 'http://localhost:4002/api'
   public isSubscribed = new EventEmitter();
+  isAuthenticated : EventEmitter<Boolean> = new EventEmitter<Boolean>()
   public data = new Subject();
   public type: string
   public _id: string;
@@ -33,13 +34,15 @@ export class CoreService {
       let headers = new HttpHeaders().set('x-access-token', token)
       this._http.get(`${this.globalValidationServerUrl}/${type}/${_id}`, {headers}).subscribe(
         (data : any) => {
+          console.log(data)
           this.data.next(data)
           this.name = data.res.first_name;
           this.validateProfile(data)
+          this.isAuthenticated.emit(true)
           this.isSubscribed.emit(data.res.isSubscribed);
         },
         error => {
-          
+
           this.processError(error)
           this.data.error(error)
           this.isLoading.next(false)

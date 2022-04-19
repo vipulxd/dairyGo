@@ -1,12 +1,15 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {Observable, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  isAuthenticated  = new EventEmitter<boolean>()
   error: EventEmitter<any> = new EventEmitter();
+  profile : Subject<any> = new Subject<any>()
   // private serverUrl = 'http://65.2.71.121:4000/'
   private serverUrl =  "http://localhost:4001/"
  loading : EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -34,7 +37,7 @@ export class AuthService {
       JSON.stringify(userDetails)
       this._http.post<ResponseType>(`${this.serverUrl}register`, userDetails).subscribe(
         (response) => {
-
+this.profile.next(response.user)
          this.setLocalItem(response.user)
         },
         err => {
@@ -56,16 +59,20 @@ export class AuthService {
 
   private processUser(type:String){
     this.loading.emit(false)
+
     switch(type){
       case 'PENDING':{
+        this.isAuthenticated.emit(false)
         this.router.navigate(['setup'])
     break;
       }
       case  'CALF' :{
+        this.isAuthenticated.emit(true)
         this.router.navigate(['calf'])
         break;
       }
       case 'COW':{
+        this.isAuthenticated.emit(true)
         this.router.navigate(['cow'])
       break;
       }
@@ -79,6 +86,7 @@ export class AuthService {
     if (localStorage.getItem('token') == null) {
       setTimeout(() => {
         this.loading.emit(false)
+        this.isAuthenticated.emit(false)
         this.router.navigate(['/'])
       }, 2000)
     }
@@ -94,6 +102,7 @@ export class AuthService {
       JSON.stringify(userDetails)
       this._http.post<ResponseType>(`${this.serverUrl}login`, userDetails).subscribe(
         (res: any) => {
+          this.profile.next(res.user)
           this.setLocalItem(res.user)
         },
         err => {

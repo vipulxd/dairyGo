@@ -21,9 +21,7 @@ public  type : String = "COW"
       this.profile = data
     })
   }
-  public logout(){
-    this._authService.logout()
-  }
+
 
 
 }

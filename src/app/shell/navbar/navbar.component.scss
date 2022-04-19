@@ -1,0 +1,84 @@
+.d-wrapper {
+  width: 20%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  flex:1;
+
+  .d-profile {
+    flex: 1;
+    align-self: center;
+
+  }
+
+  .d-modal {
+    flex: 4
+  }
+
+  .d-profile {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 17px;
+    height: 90vh;
+    margin-left: 10px;
+    justify-content: space-around;
+    text-align: left;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    background-color: #f3f3f3;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+}
+
+.userimage {
+
+  height: 100px;
+  width: 100%;
+
+  .image {
+    height: 100%;
+    width: 100%;
+  }
+}
+.bu{
+  text-align: center;
+}
+
+.verifiedImage {
+
+  height: 40px;
+  width: 40px;
+
+  .image {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.nameBox {
+  display: flex;
+  flex-direction: row;
+}
+.alt {
+  button {
+    background-color: #ee2121;
+    color:white;
+  }
+}
+.test{
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12);
+  font-size: xx-large;
+  margin-top:10px;
+  background-color: #fafa8f;
+  border-radius: 4px;
+  padding:2px;
+  display: flex;
+}
