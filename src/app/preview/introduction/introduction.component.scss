@@ -1,10 +1,10 @@
 .header {
   position: relative;
-  background-image: url("src/assets/images/img.png");
+  background-image: url("src/assets/images/wallpaper.jpg");
   height: 90vh;
   background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover;
+  background-repeat: round; /* Do not repeat the image */
+  background-size:cover ;
 margin-bottom:90px;
   .nav {
     padding: 5px;
@@ -108,7 +108,7 @@ flex-direction: column;
   font-size: xxx-large;
   align-self: center;
   text-align: center;
-  
+
 }
 .address{
   font-size: small;
@@ -118,7 +118,7 @@ color: grey;
 }
 .avail{
   align-self: center;
-  text-align: center; 
+  text-align: center;
   margin-top: 20px;
 }
 .image{
@@ -166,7 +166,7 @@ width:100%;
     font-size: xx-large;
   }
   display: flex;
- 
+
   .previewImg{
     width:60%;
     height:80%;

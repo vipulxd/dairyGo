@@ -39,36 +39,13 @@ a {
   color: inherit;
 }
 
-body {
-  background-image: url("src/assets/images/img.png");
-  height: 100vh;
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover;
-}
+
 
 .wallpaper {
   height: 100vh;
 }
 
-//.bu {
-//  button {
-//    height: 50px;
-//    min-width: 150px;
-//    border: none;
-//    cursor: pointer;
-//    border-radius: 6px;
-//    background-color: #fafa8f;
-//    margin: 4px;
-//    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-//    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-//    0 12.5px 10px rgba(0, 0, 0, 0.06),
-//    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-//    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-//    0 100px 80px rgba(0, 0, 0, 0.12);
-//
-//  }
-//}
+
 
 .in {
   input {
@@ -125,3 +102,36 @@ input:focus {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.color-darkest {
+  background-color: #000814;
+  color:white;
+}
+.color-darker{
+  background-color: #001D3D;
+color:white;
+}
+.color-dark{
+  background-color: #003566;
+  color:white;
+}
+.color-light {
+  background-color: #FFC300;
+  color:black;
+}
+.color-lighter{
+  background-color: #FFD60A;
+  color:black;
+}
+.border-radius-4{
+  border-radius: 4px;
+}
+.font-large{
+  font-size: larger;
+}
+.display-flex{
+  display:flex;
+}
+.mat-icon{
+  font-size: xx-large;
+}

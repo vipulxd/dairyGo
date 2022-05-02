@@ -1,5 +1,9 @@
 .lgWrapper{
   position: relative;
+  background-image: url("src/assets/images/wallpaper.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: round; /* Do not repeat the image */
+  background-size:cover ;
 }
 .panelWrapper{
   width:100%;

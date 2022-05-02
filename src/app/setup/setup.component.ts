@@ -19,6 +19,7 @@ public type = "PENDING"
   public mobileNo : string;
   public cows : number;
   public buffalos: number;
+  public latlng : string ;
   public goats : number ;
   public email : string;
 public profileImage ;
@@ -60,6 +61,15 @@ public profileImage ;
       break;
     }
   }
+  public findMe() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+       this.latlng = position.coords.latitude + ',' + position.coords.longitude
+      });
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  }
   public saveCowData(){
     console.log(this.profileImage)
     var data ;
@@ -72,6 +82,7 @@ public profileImage ;
         cows:this.cows,
         buffalos:this.buffalos,
         profileImage : this.profileImage,
+        latlng: this.latlng,
         type:"COW"
       }
       this._coreService.updateProfile(data)
@@ -82,6 +93,7 @@ public profileImage ;
         pincode:this.pincode,
         mobileNo:this.mobileNo,
         email:this.email,
+        latlng: this.latlng,
         type:"CALF",
         profileImage:this.profileImage
       }

@@ -13,6 +13,7 @@ export class CalfsComponent implements OnInit {
   ngOnInit() {
     this._coreService.getAllCalfs().subscribe(data=>{
       this.calfs  = data.res;
+      console.log(data.res)
     })
   }
 

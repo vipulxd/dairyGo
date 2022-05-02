@@ -8,7 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {MatButtonModule} from "@angular/material/button";
 import { NavbarComponent } from './shell/navbar/navbar.component';
 import {MatIconModule} from "@angular/material/icon";
-
+import { AgmCoreModule } from '@agm/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +17,9 @@ import {MatIconModule} from "@angular/material/icon";
   imports: [
 SpinnerDottedModule,
     BrowserModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDIbr4Jz-08WdE1GyCJ6m-QmfD2QP83vkk'
+    }),
     MatButtonModule,
     MatIconModule,
     HttpClientModule,

@@ -11,7 +11,7 @@ export class AuthService {
   error: EventEmitter<any> = new EventEmitter();
   profile : Subject<any> = new Subject<any>()
   // private serverUrl = 'http://65.2.71.121:4000/'
-  private serverUrl =  "http://localhost:4001/"
+  private serverUrl =  "http://13.233.157.142:4001/"
  loading : EventEmitter<boolean> = new EventEmitter<boolean>();
   constructor(private _http: HttpClient,
               private router: Router,
@@ -36,9 +36,9 @@ export class AuthService {
       }
       JSON.stringify(userDetails)
       this._http.post<ResponseType>(`${this.serverUrl}register`, userDetails).subscribe(
-        (response) => {
-this.profile.next(response.user)
-         this.setLocalItem(response.user)
+        (res : any) => {
+         this.profile.next(res.res)
+         this.setLocalItem(res.res)
         },
         err => {
           this.error.next(err.error.res)
@@ -102,8 +102,8 @@ this.profile.next(response.user)
       JSON.stringify(userDetails)
       this._http.post<ResponseType>(`${this.serverUrl}login`, userDetails).subscribe(
         (res: any) => {
-          this.profile.next(res.user)
-          this.setLocalItem(res.user)
+          this.profile.next(res)
+          this.setLocalItem(res)
         },
         err => {
           this.error.next(err.error.res)

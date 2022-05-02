@@ -10,6 +10,8 @@ import {AuthService} from "../../shared/auth/auth.service";
 export class NavbarComponent implements OnInit , AfterViewInit {
   isAuthenticated : Boolean = false
   profile : any
+  isOpen : Boolean = true;
+  opacity : Number = 0
   constructor(private _coreService : CoreService,
               private _authService : AuthService) { }
 
@@ -32,5 +34,7 @@ export class NavbarComponent implements OnInit , AfterViewInit {
   public logout(){
     this._authService.logout()
   }
-
+ public close(){
+    this.isOpen = !this.isOpen
+ }
 }

@@ -36,10 +36,10 @@ export class CoreService {
         (data : any) => {
           console.log(data)
           this.data.next(data)
-          this.name = data.res.first_name;
+          this.name = data.first_name;
           this.validateProfile(data)
           this.isAuthenticated.emit(true)
-          this.isSubscribed.emit(data.res.isSubscribed);
+          this.isSubscribed.emit(data.isSubscribed);
         },
         error => {
 
@@ -123,6 +123,7 @@ export class CoreService {
           mobileNo: d.mobileNo,
           cows: d.cows,
           goats: d.goats,
+          latlng: d.latlng,
           buffalos: d.buffalos,
           type: d.type,
         }
@@ -132,6 +133,7 @@ export class CoreService {
           address: d.address,
           pincode: d.pincode,
           mobileNo: d.mobileNo,
+          latlng: d.latlng,
           type: d.type
         }
       }
@@ -188,5 +190,8 @@ export class CoreService {
     const headers = new HttpHeaders().set('x-access-token', this._token)
     return this._http.get(`${this.updateVaidationServerUrl}/${type}/find/all/${id}`,{headers})
   }
+
+
+
 
 }

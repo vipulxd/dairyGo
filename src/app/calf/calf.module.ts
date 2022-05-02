@@ -7,15 +7,18 @@ import { CowsComponent } from './cows/cows.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import {MatBadgeModule} from "@angular/material/badge";
 import {MatButtonModule} from "@angular/material/button";
+import { MapComponent } from './map/map.component';
+import {AgmCoreModule} from "@agm/core";
 
 
 @NgModule({
-  declarations: [CalfComponent, CowsComponent, SubscriptionComponent],
+  declarations: [CalfComponent, CowsComponent, SubscriptionComponent, MapComponent],
   imports: [
     MatBadgeModule,
     CommonModule,
     CalfRoutingModule,
     MatButtonModule,
+    AgmCoreModule,
   ]
 })
 export class CalfModule { }

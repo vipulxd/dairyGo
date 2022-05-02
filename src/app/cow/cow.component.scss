@@ -8,7 +8,8 @@
   .d-profile {
     flex: 1;
     align-self: center;
-
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
   }
 
   .d-modal {

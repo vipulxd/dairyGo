@@ -1,41 +1,33 @@
 .d-wrapper {
-  width: 20%;
-  height: 100vh;
+  width: 80%;
   display: flex;
   flex-direction: row;
   flex:1;
-
-  .d-profile {
+ .d-profile {
     flex: 1;
     align-self: center;
 
   }
-
   .d-modal {
     flex: 4
   }
-
   .d-profile {
     display: flex;
     flex-direction: column;
-    padding: 8px 17px;
-    height: 90vh;
-    margin-left: 10px;
+    padding: 0px 17px;
+    height: 100vh;
     justify-content: space-around;
     text-align: left;
-    background: rgb(255, 255, 255);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    background-color: #f3f3f3;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+
   }
 }
 
 .userimage {
 
-  height: 100px;
+  height: 180px;
   width: 100%;
 
   .image {
@@ -50,7 +42,7 @@
 .verifiedImage {
 
   height: 40px;
-  width: 40px;
+  width: 30px;
 
   .image {
     height: 100%;
@@ -61,6 +53,7 @@
 .nameBox {
   display: flex;
   flex-direction: row;
+  width:50%
 }
 .alt {
   button {
@@ -68,17 +61,24 @@
     color:white;
   }
 }
-.test{
-  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-  0 12.5px 10px rgba(0, 0, 0, 0.06),
-  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-  0 100px 80px rgba(0, 0, 0, 0.12);
-  font-size: xx-large;
-  margin-top:10px;
-  background-color: #fafa8f;
-  border-radius: 4px;
-  padding:2px;
-  display: flex;
+.navigation{
+  height:40px;
+  min-width:20%;
+  align-self: start;
+  align-items: center;
+  cursor: pointer;
+padding:0px 10px;
+  text-align: left;
+}
+.closeNav{
+  text-align: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+.openNav{
+  text-align: center;
+  cursor: pointer;
+}
+.mat-icon{
+  margin-right:15px !important;
 }
