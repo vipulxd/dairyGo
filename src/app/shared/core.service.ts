@@ -18,7 +18,7 @@ export class CoreService {
   public isLoading = new EventEmitter();
   public _token: string;
   public name: string;
-
+public selfLocation : string ;
   constructor(private _http: HttpClient,
               private router: Router
   ) {
@@ -37,6 +37,7 @@ export class CoreService {
           console.log(data)
           this.data.next(data)
           this.name = data.first_name;
+          this.selfLocation = data.latlng
           this.validateProfile(data)
           this.isAuthenticated.emit(true)
           this.isSubscribed.emit(data.isSubscribed);
@@ -191,7 +192,19 @@ export class CoreService {
     return this._http.get(`${this.updateVaidationServerUrl}/${type}/find/all/${id}`,{headers})
   }
 
+  /** GET locations for cow **/
+  
+  public getAllLocations( t : string) : Observable<any>{
+      const headers =  new HttpHeaders().set('x-access-token',this._token)
+      return  this._http.get(`${this.updateVaidationServerUrl}/${t}/map/location`,{headers})
+  }
 
+  /** GET location by ID **/
+  public getLocationById(id:string) : Observable<any>{
+      const TYPE = 'CALF'
+      const headers = new HttpHeaders().set('x-access-token',this._token)
+      return this._http.get(`${this.updateVaidationServerUrl}/${TYPE}/map/${id}`,{headers})
+  }
 
 
 }

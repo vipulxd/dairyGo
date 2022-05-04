@@ -8,14 +8,13 @@ import { MessagesComponent } from './messages/messages.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatGridListModule} from "@angular/material/grid-list";
-import { MapComponent } from '../cow/map/map.component';
+// import { MapComponent } from '../cow/map/map.component';
 
 
 @NgModule({
-  declarations: [CowComponent, CalfsComponent, MessagesComponent, MapComponent],
+  declarations: [CowComponent, CalfsComponent, MessagesComponent],
     exports: [
         CowComponent,
-        MapComponent
     ],
   imports: [
     MatButtonModule,

@@ -12,11 +12,11 @@
   <div *ngIf="isOpen"><h1>{{profile.res.email }}</h1></div>
   <div *ngIf="isOpen"><h1>{{profile.res.pincode}}</h1></div>
   <div *ngIf="isOpen"><h1>{{profile.res.address}}</h1></div>
-  <div class="color-darkest display-flex font-large border-radius-4 navigation"><mat-icon>message</mat-icon><div><a routerLink="/cow/" ><span *ngIf="isOpen">DASHBOARD</span></a></div></div>
-  <div class="color-darkest display-flex font-large border-radius-4 navigation"><mat-icon>vpn_key</mat-icon><div><span *ngIf="isOpen">BILLING</span></div></div>
-  <div class="color-darkest display-flex font-large border-radius-4 navigation"> <mat-icon>map</mat-icon><div><a routerLink='/cow/subscribers'><span *ngIf="isOpen">SUBSCRIBERS</span></a></div></div>
-  <div class="color-darkest display-flex font-large border-radius-4 navigation"><mat-icon>message</mat-icon><div><span *ngIf="isOpen">MESSAGES</span></div></div>
-  <div class="color-darkest display-flex  font-large border-radius-4 navigation" (click)="logout()"><mat-icon> exit_to_app</mat-icon><div><span *ngIf="isOpen">SIGN OUT</span></div>
+  <div class="  font-large border-radius-4 navigation"><a routerLink="" ><div class="display-flex ite"><mat-icon>home</mat-icon><div><span *ngIf="isOpen">DASHBOARD</span></div></div></a></div>
+  <div class="  font-large border-radius-4 navigation"><a routerLink=""><div class="display-flex ite"> <mat-icon>vpn_key</mat-icon><div><span *ngIf="isOpen">BILLING</span> </div></div></a></div>
+  <div class=" font-large border-radius-4 navigation"><a routerLink=""><div class="display-flex ite"> <mat-icon>map</mat-icon><div><span *ngIf="isOpen">SUBSCRIBERS</span> </div></div></a></div>
+  <div class="  font-large border-radius-4 navigation"><a routerLink=""><div class="display-flex ite"><mat-icon>message</mat-icon><div> <span *ngIf="isOpen">MESSAGES</span></div></div></a></div>
+  <div class="   font-large border-radius-4 navigation" (click)="logout()"><a routerLink=""><div class="display-flex ite">  <mat-icon> exit_to_app</mat-icon><div><span *ngIf="isOpen">SIGN OUT</span></div></div></a>
   </div>
 </div>
 </div>
