@@ -191,7 +191,19 @@ export class CoreService {
     return this._http.get(`${this.updateVaidationServerUrl}/${type}/find/all/${id}`,{headers})
   }
 
+  /** GET locations for cow **/
+  
+  public getAllLocations( t : string) : Observable<any>{
+      const headers =  new HttpHeaders().set('x-access-token',this._token)
+      return  this._http.get(`${this.updateVaidationServerUrl}/${t}/map/location`,{headers})
+  }
 
+  /** GET location by ID **/
+  public getLocationById(id:string) : Observable<any>{
+      const TYPE = 'CALF'
+      const headers = new HttpHeaders().set('x-access-token',this._token)
+      return this._http.get(`${this.updateVaidationServerUrl}/${TYPE}/map/${id}`,{headers})
+  }
 
 
 }

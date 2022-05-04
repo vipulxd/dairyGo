@@ -1,5 +1,5 @@
 .d-wrapper {
-  width: 80%;
+  width: 50%;
   display: flex;
   flex-direction: row;
   flex:1;
@@ -27,7 +27,7 @@
 
 .userimage {
 
-  height: 180px;
+  height: 100px;
   width: 100%;
 
   .image {
@@ -41,7 +41,7 @@
 
 .verifiedImage {
 
-  height: 40px;
+  height: 30px;
   width: 30px;
 
   .image {
@@ -62,15 +62,19 @@
   }
 }
 .navigation{
-  height:40px;
-  min-width:20%;
-  align-self: start;
+  height:50px;
+  min-width:100%;
+  align-self: flex-start;
   align-items: center;
   cursor: pointer;
-padding:0px 10px;
+padding:10px 10px;
   text-align: left;
 }
+.ite :hover{
+  background-color: #2C2F38;
+}
 .closeNav{
+  font-size: xx-large;
   text-align: right;
   font-size: 20px;
   cursor: pointer;
@@ -80,5 +84,5 @@ padding:0px 10px;
   cursor: pointer;
 }
 .mat-icon{
-  margin-right:15px !important;
+  margin-right:25px !important;
 }

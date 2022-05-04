@@ -104,23 +104,23 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .color-darkest {
-  background-color: #000814;
+  background-color: #000814 !important;
   color:white;
 }
 .color-darker{
-  background-color: #001D3D;
+  background-color: #001D3D !important;
 color:white;
 }
 .color-dark{
-  background-color: #003566;
+  background-color: #003566 !important;
   color:white;
 }
 .color-light {
-  background-color: #FFC300;
+  background-color: #FFC300 !important;
   color:black;
 }
 .color-lighter{
-  background-color: #FFD60A;
+  background-color: #FFD60A !important;
   color:black;
 }
 .border-radius-4{

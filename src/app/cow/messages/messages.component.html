@@ -2,14 +2,20 @@
 <h1 class="heading">
   Recent Messages {{messeges.length}}
 </h1>
+    <div class="list color-lighter">
+        <div>ID</div>
+        <div>NAME</div>
+        <div>RECENT MESSAGE</div>
+        <div></div>
+    </div>
 <div class="scroller">
 <div *ngFor="let item of messeges">
 <div class = " messageWrapper color-dark ">
 
-<div class=messageid><h1>{{item.id}}</h1></div>
-<div class=messagename><h1>{{item.name}}</h1></div>
-<div class=message><h1>{{item.lastMessage}}</h1></div>
-<div class="remove" (click)="remover(item.id)"><mat-icon>close</mat-icon></div>
+<div class="id"><h1>{{item.id}}</h1></div>
+<div class="name"><h1>{{item.name}}</h1></div>
+<div class="message"><h1 class="text">{{item.lastMessage}}</h1></div>
+<div  class="close" (click)="remover(item.id)"><mat-icon>close</mat-icon></div>
 </div>
 </div>
 </div>
