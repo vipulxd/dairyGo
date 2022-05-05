@@ -24,7 +24,8 @@
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     transition: width 2s, height 2s, background-color 2s, transform 2s;
-
+border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
   }
 }
 
