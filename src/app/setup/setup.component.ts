@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CoreService} from "../shared/core.service";
 import {ImagePickerConf} from "ngp-image-picker";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-setup',
@@ -9,7 +10,9 @@ import {ImagePickerConf} from "ngp-image-picker";
 })
 export class SetupComponent implements OnInit {
 public type = "PENDING"
-  constructor(private _coreService : CoreService) { }
+  constructor(private _coreService : CoreService,
+  public  http : HttpClient
+  ) { }
 
   public cow : boolean  =false;
   public  calf : boolean = true
@@ -22,6 +25,7 @@ public type = "PENDING"
   public latlng : string ;
   public goats : number ;
   public email : string;
+  public files : any = [];
 public profileImage ;
   acceptedUserAggrement : boolean = false
   ngOnInit() {
@@ -71,7 +75,6 @@ public profileImage ;
     }
   }
   public saveCowData(){
-    console.log(this.profileImage)
     var data ;
     if(this.cow){
       data ={
@@ -86,6 +89,7 @@ public profileImage ;
         type:"COW"
       }
       this._coreService.updateProfile(data)
+        this.upload()
     }else {
       data ={
         address:this.address,
@@ -98,26 +102,31 @@ public profileImage ;
         profileImage:this.profileImage
       }
       this._coreService.updateProfile(data)
+   this.upload()
     }
 
   }
   onFileChanged(event) {
-    const files = event.target.files;
-    if (files.length === 0)
-      return;
-
-    const mimeType = files[0].type;
+    this.files = event.target.files;
+    if (this.files.length === 0)  {return; }
+    
+    const mimeType = this.files[0].type;
     if (mimeType.match(/image\/*/) == null) {
       // this.message = "Only images are supported.";
       return;
     }
 
     const reader = new FileReader();
-    const imagePath = files;
-    reader.readAsDataURL(files[0]);
+    const imagePath = this.files;
+    reader.readAsDataURL(this.files[0]);
     reader.onload = (_event) => {
       this.profileImage = reader.result;
     }
   }
+private upload(){
+    if(this.files.length > 0){
+        this._coreService.upload(this.files)
+    }
+}
 
 }

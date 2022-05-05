@@ -24,6 +24,7 @@ constructor(private _coreService : CoreService,
    
     
     this._coreService.data.subscribe((data : any )  =>{
+        console.log(data)
       this.profile = data
       this.pincode = data.res.pincode
     })

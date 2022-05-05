@@ -8,7 +8,7 @@
             <mat-icon>menu</mat-icon>
         </div>
 
-        <div class="userimage"><img class="image" src="assets/images/default-image.png" alt="profile-image"></div>
+        <div class="userimage"><img class="image" [src]="profileUrl" alt="profile-image"></div>
         <div class="nameBox">
             <div *ngIf="isOpen"><h1>{{profile.res.first_name | uppercase }}</h1></div>
             <div *ngIf="isOpen" class="verifiedImage"><img class="image" src="assets/images/verified.png"
@@ -18,7 +18,7 @@
         <div *ngIf="isOpen"><h1>{{profile.res.pincode}}</h1></div>
         <div *ngIf="isOpen"><h1>{{profile.res.address}}</h1></div>
         <ng-container *ngIf="navigation.length > 1">
-            <div *ngFor="let item of navigation">
+            <div *ngFor="let item of navigation" [ngClass]="!isOpen ? 'wra' : ''">
                 <div class="  font-large border-radius-4 navigation">
                     <a [routerLink]="item.link">
                         <div class="display-flex ite">
@@ -29,13 +29,15 @@
                     </a>
                 </div>
             </div>
-            <div class="   font-large border-radius-4 navigation" (click)="logout()"><a routerLink="">
-                <div class="display-flex ite">
-                    <mat-icon> exit_to_app</mat-icon>
-                    <div><span *ngIf="isOpen">SIGN OUT</span></div>
-                </div>
-            </a>
+            <div [ngClass]="!isOpen ? 'wra' :''">
+                <div class="  font-large border-radius-4 navigation" (click)="logout()"><a routerLink="">
+                    <div class="display-flex ite">
+                        <mat-icon> exit_to_app</mat-icon>
+                        <div><span *ngIf="isOpen">SIGN OUT</span></div>
+                    </div>
+                </a>
 
+                </div>
             </div>
         </ng-container>
     </div>
