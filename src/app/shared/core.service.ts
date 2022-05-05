@@ -10,6 +10,7 @@ export class CoreService {
   // public validationServerUrl = 'http://15.207.18.171:4002/api/cow/userinfo'
   public globalValidationServerUrl = 'http://localhost:4002/api'
   public updateVaidationServerUrl = 'http://localhost:4002/api'
+    public rootimageUrl = 'http://localhost:4002/'
   public isSubscribed = new EventEmitter();
   isAuthenticated : EventEmitter<Boolean> = new EventEmitter<Boolean>()
   public data = new Subject();
@@ -18,6 +19,7 @@ export class CoreService {
   public isLoading = new EventEmitter();
   public _token: string;
   public name: string;
+  public profileUrl : EventEmitter<string>  = new EventEmitter<string>()  ;
 public selfLocation : string ;
   constructor(private _http: HttpClient,
               private router: Router
@@ -34,13 +36,15 @@ public selfLocation : string ;
       let headers = new HttpHeaders().set('x-access-token', token)
       this._http.get(`${this.globalValidationServerUrl}/${type}/${_id}`, {headers}).subscribe(
         (data : any) => {
-          console.log(data)
           this.data.next(data)
           this.name = data.first_name;
           this.selfLocation = data.latlng
           this.validateProfile(data)
           this.isAuthenticated.emit(true)
           this.isSubscribed.emit(data.isSubscribed);
+            console.log(data)
+          this.profileUrl.emit(`${this.rootimageUrl}${data.res.profileImage}`)
+            console.log(this.profileUrl)
         },
         error => {
 
@@ -122,7 +126,6 @@ this.type = data.res.type
       let data
       if (d.type == 'COW') {
         data = {
-          profileImage:d.profileImage,
           address: d.address,
           pincode: d.pincode,
           mobileNo: d.mobileNo,
@@ -134,7 +137,6 @@ this.type = data.res.type
         }
       } else {
         data = {
-          profileImage:d.profileImage,
           address: d.address,
           pincode: d.pincode,
           mobileNo: d.mobileNo,
@@ -158,10 +160,12 @@ this.type = data.res.type
 
   /* GET all cows */
   public getCows(pincode: String): Observable<any> {
-    const type = localStorage.getItem('TYPE')
-    this._token = localStorage.getItem('token')
-    const headers = new HttpHeaders().set('x-access-token', this._token)
-    return this._http.get(`${this.updateVaidationServerUrl}/${type}/find/${pincode}`, {headers})
+      if (pincode) {
+          const type = localStorage.getItem('TYPE')
+          this._token = localStorage.getItem('token')
+          const headers = new HttpHeaders().set('x-access-token', this._token)
+          return this._http.get(`${this.updateVaidationServerUrl}/${type}/find/${pincode}`, {headers})
+      }
   }
 
   /* SUBSCRIBE to a cow */
@@ -210,5 +214,16 @@ this.type = data.res.type
       return this._http.get(`${this.updateVaidationServerUrl}/${TYPE}/map/${id}`,{headers})
   }
 
+  /** Upload image **/
+  upload(f : any){
+      let formData = new FormData();
+      for (var i = 0; i < f.length; i++) {
+          formData.append("image", f[i], f[i].name);
+      }
+      this._http.post(`${this.globalValidationServerUrl}/upload/image/${this._id}`, formData)
+          .subscribe((res:any )=>{
+              this.profileUrl = res.res.path
+          })
+  }
 
 }

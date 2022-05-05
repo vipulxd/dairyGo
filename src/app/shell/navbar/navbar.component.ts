@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit , AfterViewInit {
     public type : String;
   isOpen : Boolean = false;
   public navigation  = []
+    private profileUrl  = ""
   calf_navigations = [
       {
           name : "Dashboard",
@@ -59,17 +60,21 @@ export class NavbarComponent implements OnInit , AfterViewInit {
     ]
   constructor(private _coreService : CoreService,
               private _authService : AuthService) { }
-
+    
   ngOnInit() {
       this.type =  this._coreService.type
       this.loadNavigations()
   }
   ngAfterViewInit(){
+      this._coreService.profileUrl.subscribe((val)=>{
+         this.profileUrl = val
+      })
     this._coreService.data.subscribe((data : any) =>{
       this.type =  data.res.type
       this.profile = data;
       this.loadNavigations()
     })
+    
     this._authService.isAuthenticated.subscribe((isAuth)=> {
       console.log(isAuth)
       this.isAuthenticated = isAuth;

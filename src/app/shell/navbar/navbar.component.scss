@@ -31,12 +31,17 @@ border-bottom-right-radius: 6px;
 
 .userimage {
 
-  height: 100px;
-  width: 100%;
-
+  height: 120px;
+  width: 120px;
+margin: 0 auto;
   .image {
     height: 100%;
     width: 100%;
+    border-radius: 50%;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+align-self: center;
   }
 }
 .bu{
@@ -88,4 +93,9 @@ padding:10px 10px;
 .mat-icon{
   margin-right:25px !important;
   align-self: center;
+}
+.wra {
+  align-items: center;
+  align-self: center;
+  text-align: center;
 }
