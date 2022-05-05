@@ -11,7 +11,8 @@ export class NavbarComponent implements OnInit , AfterViewInit {
   isAuthenticated : Boolean = false
   profile : any
     public type : String;
-  isOpen : Boolean = true;
+  isOpen : Boolean = false;
+  public navigation  = []
   calf_navigations = [
       {
           name : "Dashboard",
@@ -42,24 +43,32 @@ export class NavbarComponent implements OnInit , AfterViewInit {
         },
         {
             name : "My Subscribers",
-            link : "/cow/subscrbers",
+            link : "/cow/subscribers",
             icon : "verified_user"
         },
         {
-            name : ""
+            name : "Messages",
+            link : "/cow/messages",
+            icon : "message",
+        },
+        {
+            name : "My Account",
+            link : "/cow/account",
+            icon : "lock"
         }
     ]
-  opacity : Number = 0
   constructor(private _coreService : CoreService,
               private _authService : AuthService) { }
 
   ngOnInit() {
-
+      this.type =  this._coreService.type
+      this.loadNavigations()
   }
   ngAfterViewInit(){
     this._coreService.data.subscribe((data : any) =>{
-      console.log(data)
+      this.type =  data.res.type
       this.profile = data;
+      this.loadNavigations()
     })
     this._authService.isAuthenticated.subscribe((isAuth)=> {
       console.log(isAuth)
@@ -68,19 +77,16 @@ export class NavbarComponent implements OnInit , AfterViewInit {
     this._coreService.isAuthenticated.subscribe(isAuth =>{
       this.isAuthenticated = isAuth
     })
-this.type =  this._coreService.type
-      this.loadNavigations()
+
   }
   
   public loadNavigations(){
+      console.log(this.type)
       if(this.type){
           if(this.type == 'CALF'){
-              
-              
-              
+              this.navigation = this.calf_navigations
           }else if (this.type == 'COW'){
-              
-              
+              this.navigation =  this.cowNavigations
           }
       }
   }

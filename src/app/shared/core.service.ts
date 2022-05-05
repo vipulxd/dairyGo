@@ -60,6 +60,7 @@ public selfLocation : string ;
           this.processError(error)
           this.data.error(error)
           this.isLoading.next(false)
+            this.isAuthenticated.emit(false)
         }
       )
     } else {
