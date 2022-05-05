@@ -1,6 +1,6 @@
 
 <div class="map_wrapper" *ngIf="isMapReady">
-    <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="23" [usePanning]="true">
         <ng-container *ngFor="let item of coordinates">
             <agm-marker
                     [latitude]="getLat(item)"

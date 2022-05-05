@@ -60,6 +60,7 @@ public selfLocation : string ;
           this.processError(error)
           this.data.error(error)
           this.isLoading.next(false)
+            this.isAuthenticated.emit(false)
         }
       )
     } else {
@@ -72,14 +73,17 @@ public selfLocation : string ;
     this.isLoading.next(false)
     switch (data.res.type) {
       case 'PENDING': {
+          this.type = data.res.type;
         this.router.navigate(['setup'])
         break;
       }
       case  'COW' : {
+          this.type = data.res.type
         this.router.navigate(['cow'])
         break;
       }
       case 'CALF' : {
+this.type = data.res.type
         this.router.navigate(['calf'])
         break;
       }

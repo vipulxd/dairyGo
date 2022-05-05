@@ -83,10 +83,11 @@ export class AuthService {
   public logout() {
     this.loading.emit(true)
     localStorage.clear()
-    if (localStorage.getItem('token') == null) {
+      this.isAuthenticated.emit(false)
+
+      if (localStorage.getItem('token') == null) {
       setTimeout(() => {
         this.loading.emit(false)
-        this.isAuthenticated.emit(false)
         this.router.navigate(['/'])
       }, 2000)
     }
