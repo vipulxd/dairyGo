@@ -60,7 +60,7 @@ export class NavbarComponent implements OnInit , AfterViewInit {
     ]
   constructor(private _coreService : CoreService,
               private _authService : AuthService) { }
-    
+
   ngOnInit() {
       this.type =  this._coreService.type
       this.loadNavigations()
@@ -74,9 +74,8 @@ export class NavbarComponent implements OnInit , AfterViewInit {
       this.profile = data;
       this.loadNavigations()
     })
-    
+
     this._authService.isAuthenticated.subscribe((isAuth)=> {
-      console.log(isAuth)
       this.isAuthenticated = isAuth;
     })
     this._coreService.isAuthenticated.subscribe(isAuth =>{
@@ -84,9 +83,8 @@ export class NavbarComponent implements OnInit , AfterViewInit {
     })
 
   }
-  
+
   public loadNavigations(){
-      console.log(this.type)
       if(this.type){
           if(this.type == 'CALF'){
               this.navigation = this.calf_navigations
@@ -95,8 +93,8 @@ export class NavbarComponent implements OnInit , AfterViewInit {
           }
       }
   }
-  
-  
+
+
   public logout(){
     this._authService.logout()
   }

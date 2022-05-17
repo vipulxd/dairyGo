@@ -9,10 +9,11 @@ import {MatBadgeModule} from "@angular/material/badge";
 import {MatButtonModule} from "@angular/material/button";
 import { MapComponent } from './map/map.component';
 import {AgmCoreModule} from "@agm/core";
+import { LiveComponent } from './live/live.component';
 
 
 @NgModule({
-  declarations: [CalfComponent, CowsComponent, SubscriptionComponent, MapComponent],
+  declarations: [CalfComponent, CowsComponent, SubscriptionComponent, MapComponent, LiveComponent],
   imports: [
     MatBadgeModule,
     CommonModule,

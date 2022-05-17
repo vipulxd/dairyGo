@@ -48,7 +48,6 @@ public profileImage ;
     this.acceptedUserAggrement = !this.acceptedUserAggrement
   }
   public onChange(d){
-    console.log(d)
     const name = d.name;
     switch (name){
       case 'address': this.address = d.value;
@@ -109,7 +108,7 @@ public profileImage ;
   onFileChanged(event) {
     this.files = event.target.files;
     if (this.files.length === 0)  {return; }
-    
+
     const mimeType = this.files[0].type;
     if (mimeType.match(/image\/*/) == null) {
       // this.message = "Only images are supported.";

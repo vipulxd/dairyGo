@@ -8,13 +8,13 @@ import {Router} from "@angular/router";
 })
 export class CoreService {
   // public validationServerUrl = 'http://15.207.18.171:4002/api/cow/userinfo'
-  public globalValidationServerUrl = 'http://localhost:4002/api'
-  public updateVaidationServerUrl = 'http://localhost:4002/api'
-    public rootimageUrl = 'http://localhost:4002/'
+  public globalValidationServerUrl = 'http://13.233.157.142:4002/api'
+  public updateVaidationServerUrl = 'http://13.233.157.142:4002/api'
+    public rootimageUrl = 'http://13.233.157.142:4002/'
   public isSubscribed = new EventEmitter();
   isAuthenticated : EventEmitter<Boolean> = new EventEmitter<Boolean>()
   public data = new Subject();
-  public type: string
+  public type: EventEmitter<string> = new EventEmitter<string>(true)
   public _id: string;
   public isLoading = new EventEmitter();
   public _token: string;
@@ -41,10 +41,8 @@ public selfLocation : string ;
           this.selfLocation = data.latlng
           this.validateProfile(data)
           this.isAuthenticated.emit(true)
-          this.isSubscribed.emit(data.isSubscribed);
-            console.log(data)
+          this.isSubscribed.emit(data.res.isSubscribed);
           this.profileUrl.emit(`${this.rootimageUrl}${data.res.profileImage}`)
-            console.log(this.profileUrl)
         },
         error => {
 
@@ -75,6 +73,7 @@ public selfLocation : string ;
 /** VALIDATE a profile type */
   public validateProfile(data) {
     this.isLoading.next(false)
+  this.type.emit(data.res.type)
     switch (data.res.type) {
       case 'PENDING': {
           this.type = data.res.type;
@@ -201,7 +200,7 @@ this.type = data.res.type
   }
 
   /** GET locations for cow **/
-  
+
   public getAllLocations( t : string) : Observable<any>{
       const headers =  new HttpHeaders().set('x-access-token',this._token)
       return  this._http.get(`${this.updateVaidationServerUrl}/${t}/map/location`,{headers})
@@ -218,6 +217,7 @@ this.type = data.res.type
   upload(f : any){
       let formData = new FormData();
       for (var i = 0; i < f.length; i++) {
+        console.log(f[i],f[i].name)
           formData.append("image", f[i], f[i].name);
       }
       this._http.post(`${this.globalValidationServerUrl}/upload/image/${this._id}`, formData)

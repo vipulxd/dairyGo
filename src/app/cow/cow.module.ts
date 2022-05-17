@@ -8,7 +8,6 @@ import { MessagesComponent } from './messages/messages.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatGridListModule} from "@angular/material/grid-list";
-// import { MapComponent } from '../cow/map/map.component';
 
 
 @NgModule({

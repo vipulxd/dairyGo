@@ -1,0 +1,62 @@
+<ng-container *ngIf="isAuthenticated">
+  <div class="container">
+    <div *ngIf="!isOpen" (click)="toggleMessenger()" class="message-icon display-flex color-darker">
+      <div>
+        <mat-icon>message</mat-icon>
+      </div>
+    </div>
+
+    <div *ngIf="isOpen">
+
+
+      <div class="message-container cnt-shadow">
+        <ng-container *ngIf="type == 'COW'">
+          <div class="inner-container">
+            <div class="header color-lighter">
+              <div>Recent Messages</div>
+              <div (click)="toggleMessenger()">
+                <mat-icon>close</mat-icon>
+              </div>
+            </div>
+            <div class="chats">
+              <div *ngFor="let item of testChats">
+                <div class="color-darker chat-container cnt-shadow">
+                  <div><img [src]="item.profileUrl" alt="profile"></div>
+                  <div class="name">{{item.name}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="type == 'CALF'">
+          <div class="inner-container">
+            <div class="header color-lighter">
+              <div>COW</div>
+              <div (click)="toggleMessenger()">
+                <mat-icon>close</mat-icon>
+              </div>
+            </div>
+            <div class="chats-show" *ngIf="isSubscribed">
+              <div class="show">
+
+              </div>
+              <div class="inp">
+                <div><input type="text" class="input-custom"></div>
+                <div class="icon-wrapper color-darker">
+                  <mat-icon>arrow_right</mat-icon>
+                </div>
+              </div>
+            </div>
+            <ng-container *ngIf="!isSubscribed">
+              <h1>Please subscribe to a COW to use this feature</h1>
+            </ng-container>
+          </div>
+
+        </ng-container>
+      </div>
+
+
+    </div>
+  </div>
+</ng-container>

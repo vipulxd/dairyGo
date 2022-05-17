@@ -11,7 +11,7 @@ export class CalfComponent implements OnInit {
 public type : String =  "CALF"
  public profile ;
 public pincode
-public isSubscribed : Boolean;  
+public isSubscribed : Boolean;
 constructor(private _coreService : CoreService,
   public _authService : AuthService
   ) { }
@@ -21,10 +21,9 @@ constructor(private _coreService : CoreService,
     this._coreService.isSubscribed.subscribe(val =>{
       this.isSubscribed =  val
     })
-   
-    
+
+
     this._coreService.data.subscribe((data : any )  =>{
-        console.log(data)
       this.profile = data
       this.pincode = data.res.pincode
     })

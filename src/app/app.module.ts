@@ -9,10 +9,12 @@ import {MatButtonModule} from "@angular/material/button";
 import { NavbarComponent } from './shell/navbar/navbar.component';
 import {MatIconModule} from "@angular/material/icon";
 import { AgmCoreModule } from '@agm/core';
+import { ConversationsComponent } from './shell/conversations/conversations.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    ConversationsComponent,
   ],
   imports: [
 SpinnerDottedModule,
