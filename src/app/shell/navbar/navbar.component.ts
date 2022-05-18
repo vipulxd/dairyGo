@@ -62,7 +62,9 @@ export class NavbarComponent implements OnInit , AfterViewInit {
               private _authService : AuthService) { }
 
   ngOnInit() {
-      this.type =  this._coreService.type
+       this._coreService.type.subscribe((val)=>{
+           this.type =  val
+       })
       this.loadNavigations()
   }
   ngAfterViewInit(){

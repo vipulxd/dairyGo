@@ -11,6 +11,7 @@ export class ConversationsComponent implements OnInit , AfterViewInit{
 public isAuthenticated : Boolean = false
   public isOpen : Boolean = false;
 public isSubscribed : Boolean = false;
+public message  : string 
 testChats = [
   {
     name:"Vipul Dev",
@@ -59,5 +60,17 @@ this._coreService.type.subscribe(val =>{
   }
   public  toggleMessenger(){
     this.isOpen = !this.isOpen
+      if(this.isOpen){
+          this._coreService.loadMessages()
+      }
+  }
+  public handleChange(e){
+      console.log(e.target.value)
+      this.message = e.target.value
+  }
+  public handleSubmit() {
+      if (this.message.length > 0) {
+          this._coreService.sendMessage(this.message)
+      }
   }
 }

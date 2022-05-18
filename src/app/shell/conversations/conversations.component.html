@@ -42,8 +42,8 @@
 
               </div>
               <div class="inp">
-                <div class="in"><input type="text" class="input-custom"></div>
-                <div class="icon-wrapper color-darker">
+                <div class="in"><input [value]="message"  (keyup)="handleChange($event)" type="text" class="input-custom"></div>
+                <div class="icon-wrapper color-darker" (click)="handleSubmit()">
                   <mat-icon>arrow_right</mat-icon>
                 </div>
               </div>
