@@ -52,7 +52,7 @@ testChats = [
 this._coreService.type.subscribe(val =>{
   this.type = val;
 })
-    console.log(this.type)
+
     this._coreService.isSubscribed.subscribe(val =>{
       this.isSubscribed = val
     })

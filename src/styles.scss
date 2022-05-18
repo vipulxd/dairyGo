@@ -96,7 +96,8 @@ input[type=file]::file-selector-button {
 }
 
 input:focus {
-  border: 1px solid #fafa8f !important;
+  border: 2px solid #003566 !important;
+  border-radius: 4px;
   outline: none;
 }
 

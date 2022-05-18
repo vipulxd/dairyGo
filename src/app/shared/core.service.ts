@@ -217,7 +217,7 @@ this.type = data.res.type
   upload(f : any){
       let formData = new FormData();
       for (var i = 0; i < f.length; i++) {
-        console.log(f[i],f[i].name)
+
           formData.append("image", f[i], f[i].name);
       }
       this._http.post(`${this.globalValidationServerUrl}/upload/image/${this._id}`, formData)
