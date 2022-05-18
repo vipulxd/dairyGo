@@ -14,7 +14,8 @@ export class CoreService {
     public isSubscribed = new EventEmitter();
     isAuthenticated: EventEmitter<Boolean> = new EventEmitter<Boolean>()
     public data = new Subject();
-    public type: EventEmitter<string> = new EventEmitter<string>(true)
+    public type: EventEmitter<string> = new EventEmitter<string>()
+    public selfType : string
     public _id: string;
     public isLoading = new EventEmitter();
     public _token: string;
@@ -22,7 +23,7 @@ export class CoreService {
     public profileUrl: EventEmitter<string> = new EventEmitter<string>();
     public selfLocation: string;
     public cow_id : string;
-   
+
     constructor(private _http: HttpClient,
                 private router: Router
     ) {
@@ -42,6 +43,8 @@ export class CoreService {
                     this.name = data.first_name;
                     this.selfLocation = data.latlng
                     this.validateProfile(data)
+                    this.selfType =  data.res.type
+                    this._id = data.res._id;
                     this.isAuthenticated.emit(true)
                     this.isSubscribed.emit(data.res.isSubscribed);
                     this.profileUrl.emit(`${this.rootimageUrl}${data.res.profileImage}`)
@@ -74,18 +77,22 @@ export class CoreService {
     }
 
     /** Load messages **/
-    public  loadMessages(){
-        const id = localStorage.getItem('id')
-        const token = localStorage.getItem('token')
+    public  loadMessages() : Observable<any>{
+      console.log(this.selfType)
+        let id ;
+        if(this.selfType == 'COW') {
+          id = localStorage.getItem('id')
+        }else {
+          id = this.cow_id
+        }
+          const token = localStorage.getItem('token')
         const headers = new HttpHeaders().set('x-access-token',token)
        if(token && id ) {
-           this._http.get(`${this.messagesServiceUrl}/${id}`,{headers}).subscribe((val) => {
-               console.log(val)
-           }, (err) => {
-
-           })
+          return this._http.get(`${this.messagesServiceUrl}/${id}`,{headers})
        }
     }
+
+    /** SEND message **/
     public sendMessage(m: string){
         const id = localStorage.getItem('id')
         const token = localStorage.getItem('token')
@@ -105,7 +112,7 @@ export class CoreService {
             })
         }
     }
-    
+
     /** VALIDATE a profile type */
     public validateProfile(data) {
         this.isLoading.next(false)

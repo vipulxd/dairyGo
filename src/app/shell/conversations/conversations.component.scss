@@ -55,8 +55,9 @@
   display: flex;
   flex-direction: row;
   min-height: 30px;
+  width:98%;
   margin-bottom: 6px;
-
+margin : 3 auto;
 
   justify-self: center;
 
@@ -74,7 +75,7 @@
   margin: 1px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+
 
   img {
     height: 50px;
@@ -95,14 +96,28 @@
   height: 100%;
 
   .show {
-    min-height: 90%
+    height: 88%;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    width:100%;
   }
-
+.message-box{
+word-break: break-word;
+  margin: 2px 18px;
+}
+  .time-box{
+    text-align: right;
+    font-size: small !important;
+    margin-right:10px;
+border-bottom: 1px solid #bbb;
+  }
   .inp {
-    min-height: 10%;
-
+    min-height: 24%;
+text-align: left;
     display: flex;
     flex-direction: row;
+    margin-top:13px;
     justify-content: space-between;
   }
 }
@@ -117,6 +132,6 @@
 }
 .input-custom{
   width:90%;
-  text-align: right;
+  text-align: left;
   margin:-14px 10px;
 }
