@@ -1,27 +1,13 @@
-# DairyGo
+# Welcome to dairyGo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.29.
+**dairyGo** project is made to make you more lazy , just by giving you the your dairy based solutions . The less you wake up early more you have time to sleep .
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# What do we provide
 
-## Code scaffolding
+Our initial goal is to provide fresh milk directly from you favourite milk seller to you doorstep . No need to go to them now . Next we will be offering you the milk in much more cleaner and hygienic way by using packages for the same milk you carry in your utensils .
+Next in the line is our dairy products starting from Milk , fresh curd .
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+> **Note:** This product **dairyGo** is still under development   buy if you wish to contribute , please reach out to me . I will be happy to work with some smart and curious minds .
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
