@@ -33,6 +33,9 @@ background-color: white;
   border-radius: 5px;
 
 }
+.d-none{
+  display: none;
+}
 
 a {
   text-decoration: none;
@@ -52,6 +55,7 @@ a {
     height: 40px;
     width: 100%;
     border: none;
+    text-align: left ;
     outline-color: #fafa8f;
     box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048),

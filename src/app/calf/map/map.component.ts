@@ -15,11 +15,12 @@ export class MapComponent implements OnInit , AfterViewInit {
     constructor(private coreService$ : CoreService) { }
     public cowUrl = '/assets/images/cow-image.png'
     ngOnInit() {
-        
+
     }
     ngAfterViewInit(){
         this.coreService$.getAllLocations('COW').subscribe(
             (val : any) =>{
+              console.log(val)
               if(val.res && val.res.length > 0) {
                   this.coordinates = val.res
                   this.isMapReady = true
