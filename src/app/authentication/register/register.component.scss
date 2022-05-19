@@ -1,5 +1,8 @@
 .lgWrapper{
   position: relative;
+  background-position: center; /* Center the image */
+  background-repeat: round; /* Do not repeat the image */
+  background-size:cover ;
 }
 .panelWrapper{
   width:100%;
@@ -12,7 +15,7 @@
 .wrapper{
   background-color: white;
   height:60vh;
-
+width:60vw
 }
 ._imageContainer{
   width:600px;
@@ -21,7 +24,7 @@
   bottom:0;
   ._image{
     height:100%;
-    width:100%;
+    width:80%;
   }
 }
 .di{

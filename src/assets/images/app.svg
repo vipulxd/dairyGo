@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="315" height="36" viewBox="0 0 315 36">
+    <defs>
+        <linearGradient id="a" x1="60.096%" x2="33.497%" y1="73.908%" y2="-12.206%">
+            <stop offset="0%" stop-color="#D6FFA1"/>
+            <stop offset="32.64%" stop-color="#93E2A7"/>
+            <stop offset="100%" stop-color="#00A3B5"/>
+        </linearGradient>
+        <linearGradient id="b" x1="-32.013%" x2="80.449%" y1="-58.829%" y2="89.12%">
+            <stop offset="0%" stop-color="#FF177B"/>
+            <stop offset="67.21%" stop-color="#FFA976"/>
+            <stop offset="100%" stop-color="#FFEC73"/>
+        </linearGradient>
+        <linearGradient id="c" x1="50.26%" x2="35.578%" y1="74.715%" y2="-29.441%">
+            <stop offset="0%" stop-color="#63FFD4"/>
+            <stop offset="48.54%" stop-color="#32A0BA"/>
+            <stop offset="83.49%" stop-color="#1262A9"/>
+            <stop offset="100%" stop-color="#064AA2"/>
+        </linearGradient>
+        <linearGradient id="d" x1="119.292%" x2="-22.998%" y1="41.843%" y2="56.365%">
+            <stop offset="0%" stop-color="#FF4521"/>
+            <stop offset="34.11%" stop-color="#D43E65"/>
+            <stop offset="79.35%" stop-color="#9F36B9"/>
+            <stop offset="100%" stop-color="#8A33DB"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g fill="#000" fill-rule="nonzero">
+            <path d="M23.296 20.864c-.384-.128-3.2-1.408-3.2-4.992 0-2.816 1.92-4.224 2.688-4.736.128-.128.256-.256.256-.384s0-.384-.128-.512c-1.792-2.688-4.608-2.944-5.376-2.944-1.408-.128-2.816.384-3.84.768-.512.256-1.024.384-1.408.384-.384 0-.896-.256-1.408-.384-.896-.384-1.92-.768-3.072-.768-2.432 0-4.864 1.536-6.144 3.712-2.304 4.48-.768 10.88 1.792 14.72 1.024 1.536 2.56 3.712 4.736 3.712h.128c.896 0 1.536-.256 2.176-.64.64-.256 1.28-.512 2.176-.512.896 0 1.536.256 2.048.512.64.256 1.28.512 2.304.512 2.176 0 3.584-2.048 4.608-3.712 1.152-1.664 1.792-3.456 1.92-4.096.256-.128.128-.512-.256-.64zM15.872 3.584C16.768 2.56 17.28 1.28 17.28 0c-1.152.256-2.432 1.024-3.2 1.92-.64.768-1.408 2.176-1.408 3.584 1.152-.128 2.432-.896 3.2-1.92z"/>
+        </g>
+        <text fill="#0F1A3B" font-family="Gotham-Book, Gotham" font-size="8.96" font-weight="300">
+            <tspan x="33.92" y="12.48">Download on the</tspan>
+        </text>
+        <text fill="#0F1A3B" font-family="Gotham-Medium, Gotham" font-size="15.36" font-weight="400">
+            <tspan x="33.92" y="28.72">App Store</tspan>
+        </text>
+        <g>
+            <text fill="#0F1A3B" font-family="Gotham-Book, Gotham" font-size="8.96" font-weight="300" transform="translate(186.4 4)">
+                <tspan x="35.2" y="8.64">Android app on</tspan>
+            </text>
+            <text fill="#0F1A3B" font-family="Gotham-Medium, Gotham" font-size="15.36" font-weight="400" transform="translate(186.4 4)">
+                <tspan x="35.2" y="24.88">Google play</tspan>
+            </text>
+            <path d="M201.045 17.743l4.314-4.26-4.314 4.26-13.77-13.593 13.769 13.595-13.79 13.617 13.79-13.617 4.334 4.279h.002z"/>
+            <path fill="url(#a)" fill-rule="nonzero" d="M18.959 9.483L2.147.358C1.671.1 1.231.04.876.15l13.77 13.593 4.313-4.26z" transform="translate(186.4 4)"/>
+            <path fill="url(#b)" fill-rule="nonzero" d="M18.98 18.024l5.739-3.116c1.164-.633 1.164-1.666 0-2.297l-5.76-3.128-4.314 4.26 4.335 4.28z" transform="translate(186.4 4)"/>
+            <path fill="url(#c)" fill-rule="nonzero" d="M.875.15C.364.308.032.82.032 1.592l.004 24.334c0 .764.32 1.269.817 1.436l13.791-13.617L.874.15z" transform="translate(186.4 4)"/>
+            <path fill="url(#d)" fill-rule="nonzero" d="M.853 27.362c.358.12.806.065 1.294-.2l16.831-9.138-4.334-4.28L.854 27.363z" transform="translate(186.4 4)"/>
+        </g>
+        <path fill="#DCDCDC" d="M149.6 1.6h1V36h-1z"/>
+    </g>
+</svg>

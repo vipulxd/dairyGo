@@ -1,6 +1,11 @@
-
-
+<div class="g-wra"><div [ngClass]="isAuthenticated ? 'one':''">
+  <app-navbar ></app-navbar>
+  <app-conversations></app-conversations>
+</div>
+<div class="sec">
 <router-outlet></router-outlet>
+</div>
+</div>
 <div *ngIf="loading"   class="loader-wrapper">
   <svg>
     <circle cx="70"  cy="70" r="50" ></circle>

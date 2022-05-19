@@ -1,6 +1,6 @@
 .card{
   background-color: #f3f3f3;
-  background-image: linear-gradient(315deg, #ffffff 0%, #ffdd00 74%);
+  padding: 10px 0px;
   box-shadow:
     0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048),
@@ -17,17 +17,25 @@
   justify-self: center;
   text-align: center;
   margin:20px;
+  h1,h2{
+    font-style: italic;
+  }
 }
 .cardWrapper{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
   width: 100%;
  flex-wrap: wrap;
+  margin:50px 0px;
+  overflow-x: auto;
+  height:280px;
+  width:95%
 }
 .heading{
   h1{
     font-size: xx-large;
     text-align: center;
+    font-style: italic;
   }
 }

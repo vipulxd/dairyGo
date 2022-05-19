@@ -1,0 +1,19 @@
+
+<div class="map_wrapper" *ngIf="isMapReady">
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="11" [usePanning]="true">
+        <ng-container *ngFor="let item of coordinates">
+            <agm-marker
+                    [latitude]="getLat(item)"
+                    [longitude]="getLang(item)"
+                    [iconUrl]="
+  {
+    url: './assets/images/cow-svgrepo-com.svg',
+    scaledSize: {
+        width: 40,
+        height: 60
+    }
+}"
+            ></agm-marker>
+        </ng-container>
+    </agm-map>
+</div>

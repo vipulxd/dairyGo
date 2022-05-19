@@ -1,7 +1,13 @@
 <div class="calf-list cnt-shadow">
-  <h1 class="calf-heading">Your Subscriptions</h1>
-  <div class="list" *ngFor="let item of calfs">
-    <div class="list-name">{{item.name}}</div>
+  <h1 class="calf-heading">My Subscriptions</h1>
+    <div class="list color-lighter display-flex">
+        <div> Name </div>
+        <div> Subscription Type</div>
+    </div>
+  <div class="scroll">
+  <div class="list color-dark" *ngFor="let item of calfs">
+    <div class="list-name">{{item.id}}</div>
     <div class="list-category">{{item.subscription_category}}</div>
   </div>
+</div>
 </div>

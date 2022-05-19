@@ -1,5 +1,23 @@
-<div class="message-wrapper cnt-shadow">
+<div class="message-wrapper cnt-shadow ">
 <h1 class="heading">
-  Recent Messages
+  Recent Messages {{messeges.length}}
 </h1>
+    <div class="list color-lighter display-flex">
+    <div>Id</div>
+        <div>Name</div>
+        <div>Recent Message</div>
+        <div></div>
+    </div>
+<div class="scroller">
+<div *ngFor="let item of messeges">
+<div class = " messageWrapper color-dark ">
+
+<div class=messageid><h1>{{item.id}}</h1></div>
+<div class=messagename><h1>{{item.name}}</h1></div>
+<div class=message><h1>{{item.lastMessage}}</h1></div>
+<div class="remove" (click)="remover(item.id)"><mat-icon>close</mat-icon></div>
+</div>
+</div>
+</div>
+
 </div>

@@ -1,13 +1,17 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {Observable, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  isAuthenticated  = new EventEmitter<boolean>()
   error: EventEmitter<any> = new EventEmitter();
-  private serverUrl = 'http://15.207.18.171:4001/'
+  profile : Subject<any> = new Subject<any>()
+  // private serverUrl = 'http://65.2.71.121:4000/'
+  private serverUrl =  "http://13.233.157.142:4001/"
  loading : EventEmitter<boolean> = new EventEmitter<boolean>();
   constructor(private _http: HttpClient,
               private router: Router,
@@ -32,8 +36,9 @@ export class AuthService {
       }
       JSON.stringify(userDetails)
       this._http.post<ResponseType>(`${this.serverUrl}register`, userDetails).subscribe(
-        response => {
-          this.setLocalItem(response)
+        (res : any) => {
+         this.profile.next(res.res)
+         this.setLocalItem(res.res)
         },
         err => {
           this.error.next(err.error.res)
@@ -48,21 +53,26 @@ export class AuthService {
     localStorage.setItem('id', res._id)
     localStorage.setItem('TYPE',res.type)
     this.processUser(res.type)
+    }
 
-  }
+
 
   private processUser(type:String){
     this.loading.emit(false)
+
     switch(type){
       case 'PENDING':{
+        this.isAuthenticated.emit(false)
         this.router.navigate(['setup'])
     break;
       }
       case  'CALF' :{
+        this.isAuthenticated.emit(true)
         this.router.navigate(['calf'])
         break;
       }
       case 'COW':{
+        this.isAuthenticated.emit(true)
         this.router.navigate(['cow'])
       break;
       }
@@ -73,7 +83,9 @@ export class AuthService {
   public logout() {
     this.loading.emit(true)
     localStorage.clear()
-    if (localStorage.getItem('token') == null) {
+      this.isAuthenticated.emit(false)
+
+      if (localStorage.getItem('token') == null) {
       setTimeout(() => {
         this.loading.emit(false)
         this.router.navigate(['/'])
@@ -90,11 +102,11 @@ export class AuthService {
       }
       JSON.stringify(userDetails)
       this._http.post<ResponseType>(`${this.serverUrl}login`, userDetails).subscribe(
-        res => {
+        (res: any) => {
+          this.profile.next(res)
           this.setLocalItem(res)
         },
         err => {
-
           this.error.next(err.error.res)
           this.loading.emit(false)
         }
@@ -112,6 +124,7 @@ interface UserInterface {
 }
 
 interface ResponseType {
+  user: ResponseType,
   _id: string,
   first_name: string,
   last_name: string,

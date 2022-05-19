@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {CoreService} from "../../shared/core.service";
 
 @Component({
@@ -6,23 +6,25 @@ import {CoreService} from "../../shared/core.service";
   templateUrl: './cows.component.html',
   styleUrls: ['./cows.component.scss']
 })
-export class CowsComponent implements OnInit {
+export class CowsComponent implements OnInit , OnChanges {
 @Input() pincode : String
   public data;
 public amount
   constructor(public _coreService : CoreService) { }
 
   ngOnInit() {
-    this._coreService.getCows(this.pincode).subscribe( cow =>{
-      this.amount = cow.res.length;
-      this.data = cow
-    },err=>{
-        console.log(err)
-      }
-      )
+
   }
-  public subscribeToCow(id:string){
-    console.log(id)
+  ngOnChanges(changes: SimpleChanges) {
+      this._coreService.getCows(this.pincode).subscribe( cow =>{
+              this.amount = cow.res.length;
+              this.data = cow
+          },err=>{
+          }
+      )
+}
+
+    public subscribeToCow(id:string){
     this._coreService.subscribeToCow(id)
   }
 

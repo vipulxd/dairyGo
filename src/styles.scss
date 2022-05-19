@@ -27,11 +27,14 @@ body {
   0 41.8px 33.4px rgba(0, 0, 0, 0.086),
   0 100px 80px rgba(0, 0, 0, 0.12);
 
-
+background-color: white;
   min-height: 200px;
 
   border-radius: 5px;
 
+}
+.d-none{
+  display: none;
 }
 
 a {
@@ -39,42 +42,20 @@ a {
   color: inherit;
 }
 
-body {
-  background-image: url("src/assets/images/img.png");
-  height: 100vh;
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover;
-}
+
 
 .wallpaper {
   height: 100vh;
 }
 
-.bu {
-  button {
-    height: 50px;
-    min-width: 150px;
-    border: none;
-    cursor: pointer;
-    border-radius: 6px;
-    background-color: #fafa8f;
-    margin: 4px;
-    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-    0 12.5px 10px rgba(0, 0, 0, 0.06),
-    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-    0 100px 80px rgba(0, 0, 0, 0.12);
 
-  }
-}
 
 .in {
   input {
     height: 40px;
     width: 100%;
     border: none;
+    text-align: left ;
     outline-color: #fafa8f;
     box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048),
@@ -119,6 +100,43 @@ input[type=file]::file-selector-button {
 }
 
 input:focus {
-  border: 1px solid #fafa8f !important;
+  border: 2px solid #003566 !important;
+  border-radius: 4px;
   outline: none;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.color-darkest {
+  background-color: #000814 !important;
+  color:white !important;
+}
+.color-darker{
+  background-color: #001D3D !important;
+color:white !important;
+}
+.color-dark{
+  background-color: #003566 !important;
+  color:white !important;
+}
+.color-light {
+  background-color: #FFC300 !important;
+  color:black;
+}
+.color-lighter{
+  background-color: #FFD60A !important;
+  color:black;
+}
+.border-radius-4{
+  border-radius: 4px;
+}
+.font-large{
+  font-size: larger;
+}
+.display-flex{
+  display:flex;
+}
+.mat-icon{
+  font-size: xx-large;
 }

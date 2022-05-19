@@ -11,11 +11,11 @@
         <div class="in"><input #Password  type="password" name="password" (keyup)="onUpdate(Password)"></div>
         <div class="btn-wrapper">
         <div class="bu">
-          <button type="submit" *ngIf="!loading" (click)="login()">Login</button>
+          <button mat-raised-button color="accent" type="submit" *ngIf="!loading" (click)="login()" (keyup.enter)="login()">Login</button>
             <button type="submit" *ngIf="loading"></button>
         </div>
         <div class="bu">
-          <button type="submit"><a routerLink="/auth/register">New User ?</a></button>
+          <button mat-raised-button color="accent" type="submit"><a routerLink="/auth/register">New User ?</a></button>
         </div>
         </div>
       </div>
@@ -23,8 +23,8 @@
   </div>
 
 
-  <div class="_imageContainer">
-    <img class="_image" src="./assets/images/cow-eating.png" alt="cowimage">
-  </div>
+<!--  <div class="_imageContainer">-->
+<!--    <img class="_image" src="./assets/images/cow-eating.png" alt="cowimage">-->
+<!--  </div>-->
 
 </div>

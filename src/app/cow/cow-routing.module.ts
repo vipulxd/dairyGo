@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CowComponent } from './cow.component';
 
-const routes: Routes = [{ path: '', component: CowComponent }];
+const routes: Routes = [{ path: '', component: CowComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
