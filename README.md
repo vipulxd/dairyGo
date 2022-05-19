@@ -1,6 +1,6 @@
 # Welcome to dairyGo
 
-**dairyGo** project is made to make you more lazy , just by giving you the your dairy based solutions . The less you wake up early more you have time to sleep .
+**dairyGo** project is made to make you more lazy , just by giving you  your dairy based solutions . The less you wake up early more you have time to sleep .
 
 
 # What do we provide
