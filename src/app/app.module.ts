@@ -10,24 +10,28 @@ import { NavbarComponent } from './shell/navbar/navbar.component';
 import {MatIconModule} from "@angular/material/icon";
 import { AgmCoreModule } from '@agm/core';
 import { ConversationsComponent } from './shell/conversations/conversations.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { ChatViewComponent } from './shell/conversations/chat-view/chat-view.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     ConversationsComponent,
+    ChatViewComponent,
   ],
-  imports: [
-SpinnerDottedModule,
-    BrowserModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDIbr4Jz-08WdE1GyCJ6m-QmfD2QP83vkk'
-    }),
-    MatButtonModule,
-    MatIconModule,
-    HttpClientModule,
-    AppRoutingModule
+    imports: [
+        SpinnerDottedModule,
+        BrowserModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyDIbr4Jz-08WdE1GyCJ6m-QmfD2QP83vkk'
+        }),
+        MatButtonModule,
+        MatIconModule,
+        HttpClientModule,
+        AppRoutingModule,
+        MatProgressSpinnerModule
 
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

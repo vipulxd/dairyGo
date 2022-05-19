@@ -1,0 +1,12 @@
+<div class="chat-view-wrapper">
+    <div *ngIf="isProcessing">
+    <mat-spinner color="primary"></mat-spinner>
+    </div>
+    <div class="chat-container">
+        <div class="chats" *ngFor="let message of filteredChats">
+            <div style="word-break: break-word " >{{message.message}}</div>
+       <div style="text-align: right">{{message.timeStamp | date :'dd-MM-yy HH:mm'}} </div>
+        </div>
+       
+    </div>
+</div>

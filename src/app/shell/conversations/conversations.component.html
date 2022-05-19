@@ -1,67 +1,94 @@
 <ng-container *ngIf="isAuthenticated">
-  <div class="container">
-    <div *ngIf="!isOpen" (click)="toggleMessenger()" class="message-icon display-flex color-darker">
-      <div>
-        <mat-icon>message</mat-icon>
-      </div>
+    <div class="container">
+        <div *ngIf="!isOpen" (click)="toggleMessenger()" class="message-icon display-flex color-darker">
+            <div>
+                <mat-icon>message</mat-icon>
+            </div>
+        </div>
+
+        <div *ngIf="isOpen">
+
+
+            <div class="message-container cnt-shadow">
+                <ng-container *ngIf="type == 'COW'">
+                    <div class="inner-container">
+                        <div class="header color-lighter">
+                            <div (click)="back()" *ngIf="isClicked"><mat-icon>arrow_back_ios</mat-icon></div>
+                            <div *ngIf="!isClicked">Recent Messages</div>
+                            <div *ngIf="isClicked">{{selectedID}}</div>
+                            <div (click)="toggleMessenger()">
+                                <mat-icon>close</mat-icon>
+                            </div>
+                        </div>
+                        <div class="chats">
+                            <ng-container *ngIf="!loading">
+                                <div *ngIf="!isClicked">
+                                    <div *ngFor="let item of publicChats">
+                                        <div class=" chat-container " (click)="handleSelection(item.name)">
+                                            <div><img [src]="item.profileUrl" alt="profile"></div>
+                                            <div class="name">{{item.name}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="isClicked"> 
+                                <app-chat-view 
+                                        [selectedID]="selectedID" 
+                                [chats]="chats"
+                                >
+                                </app-chat-view>
+                                    
+                                </div>
+                               
+                            </ng-container>
+                            <ng-container *ngIf="loading">
+                                <mat-spinner color="accent"></mat-spinner>
+                            </ng-container>
+                        </div>
+                        <div *ngIf="isClicked" class="input-cst">
+                            <div class="in"><input [value]="message" (keyup)="handleChange($event)" type="text"
+                                                   class="input-custom"></div>
+                            <div class="icon-wrapper color-darker" (click)="handleSubmit()">
+                                <mat-icon>arrow_forward_ios</mat-icon>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngIf="type == 'CALF'">
+                    <div class="inner-container">
+                        <div class="header color-lighter">
+                            <div>COW</div>
+                            <div (click)="toggleMessenger()">
+                                <mat-icon>close</mat-icon>
+                            </div>
+                        </div>
+                        <div class="chats-show" *ngIf="isSubscribed">
+                            <div class="show">
+                               <app-chat-view
+                                    [selectedID]="selectedID"
+                                    [chats]="chats"
+                            >
+                            </app-chat-view>
+                            </div>
+                            <div  class="input-cst">
+                                <div class="in"><input [value]="message" (keyup)="handleChange($event)" type="text"
+                                                       class="input-custom"></div>
+                                <div class="icon-wrapper color-darker" (click)="handleSubmit()">
+                                    <mat-icon>arrow_forward_ios</mat-icon>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <ng-container *ngIf="!isSubscribed">
+                            <h1>Please subscribe to a COW to use this feature</h1>
+                        </ng-container>
+                    </div>
+
+                </ng-container>
+            </div>
+
+
+        </div>
     </div>
-
-    <div *ngIf="isOpen">
-
-
-      <div class="message-container cnt-shadow">
-        <ng-container *ngIf="type == 'COW'">
-          <div class="inner-container">
-            <div class="header color-lighter">
-              <div>Recent Messages</div>
-              <div (click)="toggleMessenger()">
-                <mat-icon>close</mat-icon>
-              </div>
-            </div>
-            <div class="chats" >
-              <div *ngFor="let item of publicChats">
-                <div class="color-darker chat-container cnt-shadow">
-                  <div><img [src]="item.profileUrl" alt="profile"></div>
-                  <div class="name">{{item.name}}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </ng-container>
-
-        <ng-container *ngIf="type == 'CALF'">
-          <div class="inner-container">
-            <div class="header color-lighter">
-              <div>COW</div>
-              <div (click)="toggleMessenger()">
-                <mat-icon>close</mat-icon>
-              </div>
-            </div>
-            <div class="chats-show" *ngIf="isSubscribed">
-              <div class="show">
-<ng-container *ngFor="let message of cowChats">
-  <div class="message-box"><span>{{message.message}}</span></div>
-  <div class="time-box"><span>{{message.timeStamp | date:'dd-MM-yyyy hh:mm'}}</span></div>
-
-</ng-container>
-              </div>
-              <div class="inp">
-                <div class="in"><input [value]="message"  (keyup)="handleChange($event)" type="text" class="input-custom"></div>
-                <div class="icon-wrapper color-darker" (click)="handleSubmit()">
-                  <mat-icon>arrow_right</mat-icon>
-                </div>
-              </div>
-            </div>
-
-            <ng-container *ngIf="!isSubscribed">
-              <h1>Please subscribe to a COW to use this feature</h1>
-            </ng-container>
-          </div>
-
-        </ng-container>
-      </div>
-
-
-    </div>
-  </div>
 </ng-container>

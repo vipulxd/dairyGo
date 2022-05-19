@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
 export class CoreService {
     public globalValidationServerUrl = 'http://13.233.157.142:4002/api'
     public rootimageUrl = 'http://13.233.157.142:4002/'
-    public messagesServiceUrl = 'http://13.233.157.142:4003/messages'
+    public messagesServiceUrl = 'http://localhost:4003/messages'
 
     public isSubscribed = new EventEmitter();
     isAuthenticated: EventEmitter<Boolean> = new EventEmitter<Boolean>()
@@ -43,12 +43,12 @@ export class CoreService {
                     this.name = data.first_name;
                     this.selfLocation = data.latlng
                     this.validateProfile(data)
+                    this.cow_id = data.res.sub_id
                     this.selfType =  data.res.type
                     this._id = data.res._id;
                     this.isAuthenticated.emit(true)
                     this.isSubscribed.emit(data.res.isSubscribed);
                     this.profileUrl.emit(`${this.rootimageUrl}${data.res.profileImage}`)
-                    this.loadMessages()
                 },
                 error => {
 
@@ -78,7 +78,7 @@ export class CoreService {
 
     /** Load messages **/
     public  loadMessages() : Observable<any>{
-      console.log(this.selfType)
+      this.selfType = localStorage.getItem('TYPE')
         let id ;
         if(this.selfType == 'COW') {
           id = localStorage.getItem('id')
@@ -87,23 +87,36 @@ export class CoreService {
         }
           const token = localStorage.getItem('token')
         const headers = new HttpHeaders().set('x-access-token',token)
-       if(token && id ) {
+        console.log(token , id , this.selfType)
+       if(token && id && this.selfType ) {
           return this._http.get(`${this.messagesServiceUrl}/${id}`,{headers})
        }
     }
 
     /** SEND message **/
-    public sendMessage(m: string){
+    public sendMessage(m: string , senderId: string){
         const id = localStorage.getItem('id')
+        const type =  localStorage.getItem('TYPE')
         const token = localStorage.getItem('token')
         const headers = new HttpHeaders().set('x-access-token',token)
-        const data = {
-            from : id,
-            cowID  : this.cow_id,
-            message : m
+        let data 
+        if(type == 'CALF') {
+            data = {
+                from: id,
+                to: this.cow_id,
+                message: m , 
+                type : type
+            }
+        }else {
+            data = {
+                from : id,
+                to : senderId,
+                message : m ,
+                type : type
+            }
         }
         JSON.stringify(data)
-        console.log(data)
+        
         if(id && token){
             this._http.post(`${this.messagesServiceUrl}/message/cow`, data, {headers}).subscribe((val)=>{
                 console.log(val)
@@ -117,7 +130,6 @@ export class CoreService {
     public validateProfile(data) {
         this.isLoading.next(false)
         this.type.emit(data.res.type)
-        this.cow_id = data.res.sub_id;
         switch (data.res.type) {
             case 'PENDING': {
                 this.type = data.res.type;
