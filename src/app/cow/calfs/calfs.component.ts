@@ -12,8 +12,11 @@ export class CalfsComponent implements OnInit {
 
   ngOnInit() {
     this._coreService.getAllCalfs().subscribe(data=>{
-      this.calfs  = data.res;
+        let key = "id"
+        this.calfs = [...new Map(data.res.map(item =>
+            [item[key], item])).values()];
     })
+
   }
 
 }

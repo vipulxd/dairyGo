@@ -45,18 +45,18 @@ export class NavbarComponent implements OnInit , AfterViewInit {
         {
             name : "My Subscribers",
             link : "/cow/subscribers",
-            icon : "verified_user"
+            icon : "map"
         },
-        {
-            name : "Messages",
-            link : "/cow/messages",
-            icon : "message",
-        },
-        {
-            name : "My Account",
-            link : "/cow/account",
-            icon : "lock"
-        }
+        // {
+        //     name : "Messages",
+        //     link : "/cow/messages",
+        //     icon : "message",
+        // },
+        // {
+        //     name : "My Account",
+        //     link : "/cow/account",
+        //     icon : "lock"
+        // }
     ]
   constructor(private _coreService : CoreService,
               private _authService : AuthService) { }
@@ -65,6 +65,7 @@ export class NavbarComponent implements OnInit , AfterViewInit {
        this._coreService.type.subscribe((val)=>{
            this.type =  val
        })
+      this._coreService.verifyProfile()
       this.loadNavigations()
   }
   ngAfterViewInit(){

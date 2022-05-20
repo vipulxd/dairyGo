@@ -10,11 +10,11 @@ export class CoreService {
     public globalValidationServerUrl = 'http://13.233.157.142:4002/api'
     public rootimageUrl = 'http://13.233.157.142:4002/'
     public messagesServiceUrl = 'http://13.233.157.142:4003/messages'
-
+    public subscribersArray : []
     public isSubscribed = new EventEmitter();
     isAuthenticated: EventEmitter<Boolean> = new EventEmitter<Boolean>()
     public data = new Subject();
-    public type: EventEmitter<string> = new EventEmitter<string>()
+    public type: EventEmitter<any> = new EventEmitter<any>()
     public selfType : string
     public _id: string;
     public isLoading = new EventEmitter();
@@ -39,16 +39,18 @@ export class CoreService {
             let headers = new HttpHeaders().set('x-access-token', token)
             this._http.get(`${this.globalValidationServerUrl}/${type}/${_id}`, {headers}).subscribe(
                 (data: any) => {
+                    this.isAuthenticated.emit(true)
                     this.data.next(data)
+                    this.type.emit(data.res.type)
                     this.name = data.first_name;
                     this.selfLocation = data.latlng
                     this.validateProfile(data)
+                    this.cow_id = data.res.sub_id
                     this.selfType =  data.res.type
                     this._id = data.res._id;
-                    this.isAuthenticated.emit(true)
+                    this.subscribersArray = data.res.subscribers
                     this.isSubscribed.emit(data.res.isSubscribed);
                     this.profileUrl.emit(`${this.rootimageUrl}${data.res.profileImage}`)
-                    this.loadMessages()
                 },
                 error => {
 
@@ -74,11 +76,12 @@ export class CoreService {
         } else {
             this.router.navigate(['/auth', 'login'])
         }
+        this.isLoading.emit(false)
     }
 
     /** Load messages **/
     public  loadMessages() : Observable<any>{
-      console.log(this.selfType)
+      this.selfType = localStorage.getItem('TYPE')
         let id ;
         if(this.selfType == 'COW') {
           id = localStorage.getItem('id')
@@ -87,26 +90,38 @@ export class CoreService {
         }
           const token = localStorage.getItem('token')
         const headers = new HttpHeaders().set('x-access-token',token)
-       if(token && id ) {
+    
+       if(token && id && this.selfType ) {
           return this._http.get(`${this.messagesServiceUrl}/${id}`,{headers})
        }
     }
 
     /** SEND message **/
-    public sendMessage(m: string){
+    public sendMessage(m: string , senderId: string){
         const id = localStorage.getItem('id')
+        const type =  localStorage.getItem('TYPE')
         const token = localStorage.getItem('token')
         const headers = new HttpHeaders().set('x-access-token',token)
-        const data = {
-            from : id,
-            cowID  : this.cow_id,
-            message : m
+        let data 
+        if(type == 'CALF') {
+            data = {
+                from: id,
+                to: this.cow_id,
+                message: m , 
+                type : type
+            }
+        }else {
+            data = {
+                from : id,
+                to : senderId,
+                message : m ,
+                type : type
+            }
         }
         JSON.stringify(data)
-        console.log(data)
+        
         if(id && token){
             this._http.post(`${this.messagesServiceUrl}/message/cow`, data, {headers}).subscribe((val)=>{
-                console.log(val)
             }, (e)=>{
                 console.error(e)
             })
@@ -116,8 +131,6 @@ export class CoreService {
     /** VALIDATE a profile type */
     public validateProfile(data) {
         this.isLoading.next(false)
-        this.type.emit(data.res.type)
-        this.cow_id = data.res.sub_id;
         switch (data.res.type) {
             case 'PENDING': {
                 this.type = data.res.type;
@@ -139,14 +152,12 @@ export class CoreService {
 
     /** Process the ERRORS */
     public processError(err) {
-        // this.isLoading.emit(true);
         const status = err.status;
         switch (status) {
             case 401: {
-                // this.isLoading.emit(true)
                 localStorage.clear();
-                // this.isLoading.emit(false)
                 this.router.navigate(['/auth', 'login'])
+                this.isLoading.next(false)
             }
                 break;
             case 404 : {
@@ -269,5 +280,9 @@ export class CoreService {
                 this.profileUrl = res.res.path
             })
     }
-
+    public  getSubscribersInfo(id:string) : Observable<any>{
+        let headers =  new HttpHeaders().set('x-access-token',localStorage.getItem('token'))
+        return  this._http.get(`${this.globalValidationServerUrl}/CALF/${id}`, {headers})
+        
+    }
 }

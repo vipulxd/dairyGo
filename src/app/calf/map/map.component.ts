@@ -20,7 +20,6 @@ export class MapComponent implements OnInit , AfterViewInit {
     ngAfterViewInit(){
         this.coreService$.getAllLocations('COW').subscribe(
             (val : any) =>{
-              console.log(val)
               if(val.res && val.res.length > 0) {
                   this.coordinates = val.res
                   this.isMapReady = true
@@ -36,7 +35,9 @@ export class MapComponent implements OnInit , AfterViewInit {
     }
 
     public getLang(i: any) {
-        let longitude = i.split(",")[1]
-        return Number(longitude)
+        if (i) {
+            let longitude = i.split(",")[1]
+            return Number(longitude)
+        }
     }
 }
