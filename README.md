@@ -11,3 +11,6 @@ Next in the line is our dairy products starting from Milk , fresh curd .
 
 > **Note:** This product **dairyGo** is still under development   buy if you wish to contribute , please reach out to me . I will be happy to work with some smart and curious minds .
 
+## This project is build using **MEAN** stack along with microservices
+
+![Screenshot](arc.png)
