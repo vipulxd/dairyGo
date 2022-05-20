@@ -8,19 +8,24 @@ import { MessagesComponent } from './messages/messages.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatGridListModule} from "@angular/material/grid-list";
+import { MapComponent } from './map/map.component';
+import {AgmCoreModule} from "@agm/core";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
 @NgModule({
-  declarations: [CowComponent, CalfsComponent, MessagesComponent],
+  declarations: [CowComponent, CalfsComponent, MessagesComponent, MapComponent],
     exports: [
         CowComponent,
     ],
-  imports: [
-    MatButtonModule,
-    MatGridListModule,
-    MatIconModule,
-    CommonModule,
-    CowRoutingModule
-  ]
+    imports: [
+        MatButtonModule,
+        MatGridListModule,
+        MatIconModule,
+        CommonModule,
+        CowRoutingModule,
+        AgmCoreModule,
+        MatProgressSpinnerModule
+    ]
 })
 export class CowModule { }

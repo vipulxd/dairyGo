@@ -19,9 +19,9 @@ export class AppComponent implements OnInit {
     this._coreService.isLoading.subscribe(state => {
       this.loading = state;
     });
-    this._authService.loading.subscribe(state => {
-      this.loading = state
-    })
+    // this._authService.loading.subscribe(state => {
+    //   this.loading = state
+    // })
     this._authService.isAuthenticated.subscribe( state =>{
       this.isAuthenticated = state
     })

@@ -8,70 +8,77 @@ import {CoreService} from "../../shared/core.service";
     styleUrls: ['./conversations.component.scss']
 })
 export class ConversationsComponent implements OnInit, AfterViewInit {
-    public isAuthenticated: Boolean = false
+    public isAuthenticated: Boolean = true
     public isOpen: Boolean = false;
     public isSubscribed: Boolean = true;
     public message: string = ''
     public selfId: string
     public type: string;
-public chats : [MESSAGES];
+    public chats: [MESSAGES];
     public publicChats = [];
     public cowChats = [];
-    public selectedID : string = localStorage.getItem('id')
+    public selectedID: string = localStorage.getItem('id')
+
     public loading: boolean = true;
-public isClicked : boolean = false;
+    public isClicked: boolean = false;
+
     constructor(public _authService: AuthService,
                 public _coreService: CoreService
     ) {
     }
 
     ngOnInit() {
+        this._coreService.isAuthenticated.subscribe(val=>{
+            this.isAuthenticated =  val
+        })
+        this._coreService.type.subscribe(val => {
+            console.log(val)
+            this.type = val;
+        })
     }
 
 
     ngAfterViewInit() {
         this.selfId = localStorage.getItem('id')
-        this._authService.isAuthenticated.subscribe((isAuth) => {
-            this.isAuthenticated = isAuth;
-        })
-        this._coreService.isAuthenticated.subscribe(isAuth => {
-            this.isAuthenticated = isAuth
-        })
-        this._coreService.type.subscribe(val => {
-            this.type = val;
-        })
-        if (this.type == 'COW') {
-        this.getMessages()
-    }
+        
+       
+        
+
+
         this._coreService.isSubscribed.subscribe(val => {
             this.isSubscribed = val
         })
+        this.getMessages()
+        console.log(this.isAuthenticated)
     }
 
- public back(){
+    public back() {
         this.isClicked = false;
-        
- }
+   
+    }
+
     /** Message toggler **/
     public toggleMessenger() {
         this.getMessages()
         this.isOpen = !this.isOpen
-        if(this.isClicked){
+        if (this.isClicked) {
             this.isClicked = false;
         }
-           
+
     }
-    public getMessages(){
+
+    public getMessages() {
         this._coreService.loadMessages().subscribe(val => {
             this.chats = val.res.messages
             val.res.messages.map(item => {
+               
                 if (item.from == this.selfId) {
                     this.cowChats.push(item)
                 }
                 this.filterMessage(item)
             })
-        },(error)=>{
-            console.error(error)
+        }, (error) => {
+           
         })
     }
 
@@ -84,7 +91,7 @@ public isClicked : boolean = false;
 
         this.publicChats = this.publicChats.filter((value, index, self) =>
                 index === self.findIndex((t) => (
-                    t.name === value.name && t.name === value.name
+                    t.name === value.name && t.name === value.name && t.name != this._coreService._id
                 ))
         )
         this.loading = false
@@ -95,19 +102,20 @@ public isClicked : boolean = false;
         this.message = e.target.value
     }
 
-public handleSelection(name: string){
-        if(this.type == "COW") {
+    public handleSelection(name: string) {
+        if (this.type == "COW") {
             this.selectedID = name;
-        }else {
+        } else {
             this.selectedID = localStorage.getItem('id')
         }
         this.isClicked = !this.isClicked
-}
+    }
+
     public handleSubmit() {
         if (this.message.length > 0) {
-            this._coreService.sendMessage(this.message,this.selectedID)
+            this._coreService.sendMessage(this.message, this.selectedID)
             const currentMessage = {
-                from:localStorage.getItem('id'),
+                from: localStorage.getItem('id'),
                 message: this.message,
                 to: this.selectedID,
                 timeStamp: Date.now().toString()
