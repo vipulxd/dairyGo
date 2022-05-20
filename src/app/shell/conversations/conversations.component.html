@@ -20,7 +20,7 @@
                                 <mat-icon>close</mat-icon>
                             </div>
                         </div>
-                        <div class="chats">
+                        <div class="chats" #scrollMe [scrollTop]="scrollMe.scrollHeight">
                             <ng-container *ngIf="!loading">
                                 <div *ngIf="!isClicked">
                                     <div *ngFor="let item of publicChats">
@@ -62,8 +62,8 @@
                                 <mat-icon>close</mat-icon>
                             </div>
                         </div>
-                        <div class="chats-show" *ngIf="isSubscribed">
-                            <div class="show">
+                        <div class="chats-show">
+                            <div class="show"  *ngIf="isSubscribed" #scrollMe [scrollTop]="scrollMe.scrollHeight">
                                <app-chat-view
                                     [selectedID]="selectedID"
                                     [chats]="chats"

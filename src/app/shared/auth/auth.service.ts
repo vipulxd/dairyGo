@@ -12,7 +12,7 @@ export class AuthService {
   profile : Subject<any> = new Subject<any>()
   // private serverUrl = 'http://65.2.71.121:4000/'
   private serverUrl =  "http://13.233.157.142:4001/"
- loading : EventEmitter<boolean> = new EventEmitter<boolean>();
+ loading : EventEmitter<boolean> = new EventEmitter<boolean>() ;
   constructor(private _http: HttpClient,
               private router: Router,
   ) {

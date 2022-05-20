@@ -35,7 +35,9 @@ export class MapComponent implements OnInit , AfterViewInit {
     }
 
     public getLang(i: any) {
-        let longitude = i.split(",")[1]
-        return Number(longitude)
+        if (i) {
+            let longitude = i.split(",")[1]
+            return Number(longitude)
+        }
     }
 }

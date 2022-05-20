@@ -21,8 +21,10 @@
   }
 }
 .scroll{
-height:180px;
-  overflow-y: scroll;
+height:100%;
+  margin:10px 10px;
+  padding:10px;
+  //overflow-y: scroll;
 }
 .calf-heading{
   text-align: center;
