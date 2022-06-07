@@ -10,8 +10,8 @@ export class AuthService {
   isAuthenticated  = new EventEmitter<boolean>()
   error: EventEmitter<any> = new EventEmitter();
   profile : Subject<any> = new Subject<any>()
-  // private serverUrl = 'http://65.2.71.121:4000/'
-  private serverUrl =  "http://13.233.157.142:4001/"
+
+  private serverUrl =  "http://13.126.121.91:4001/"
  loading : EventEmitter<boolean> = new EventEmitter<boolean>() ;
   constructor(private _http: HttpClient,
               private router: Router,

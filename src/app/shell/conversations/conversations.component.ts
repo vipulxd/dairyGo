@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {AuthService} from "../../shared/auth/auth.service";
-import {CoreService} from "../../shared/core.service";
+import {AuthService} from "../../services/auth/auth.service";
+import {CoreService} from "../../services/core.service";
 
 @Component({
     selector: 'app-conversations',
@@ -40,9 +40,9 @@ export class ConversationsComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
         this.selfId = localStorage.getItem('id')
-        
-       
-        
+
+
+
 
 
         this._coreService.isSubscribed.subscribe(val => {
@@ -54,7 +54,7 @@ export class ConversationsComponent implements OnInit, AfterViewInit {
 
     public back() {
         this.isClicked = false;
-   
+
     }
 
     /** Message toggler **/
@@ -71,14 +71,14 @@ export class ConversationsComponent implements OnInit, AfterViewInit {
         this._coreService.loadMessages().subscribe(val => {
             this.chats = val.res.messages
             val.res.messages.map(item => {
-               
+
                 if (item.from == this.selfId) {
                     this.cowChats.push(item)
                 }
                 this.filterMessage(item)
             })
         }, (error) => {
-           
+
         })
     }
 

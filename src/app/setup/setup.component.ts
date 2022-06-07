@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CoreService} from "../shared/core.service";
+import {CoreService} from "../services/core.service";
 import {ImagePickerConf} from "ngp-image-picker";
 import {HttpClient} from "@angular/common/http";
 

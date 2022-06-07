@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {CoreService} from "../../shared/core.service";
+import {CoreService} from "../../services/core.service";
 
 @Component({
   selector: 'app-map',
@@ -26,8 +26,8 @@ export class MapComponent implements AfterViewInit {
           })
       })
       this.isMapReady =   true
-  } 
-  
+  }
+
     public getLat(i: any) {
         if (i) {
             let latitude = i.split(",")[0]

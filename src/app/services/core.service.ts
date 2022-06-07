@@ -7,9 +7,10 @@ import {Router} from "@angular/router";
     providedIn: 'root'
 })
 export class CoreService {
-    public globalValidationServerUrl = 'http://13.233.157.142:4002/api'
-    public rootimageUrl = 'http://13.233.157.142:4002/'
-    public messagesServiceUrl = 'http://13.233.157.142:4003/messages'
+
+    public globalValidationServerUrl = 'http://13.126.121.91:4002/api'
+    public rootimageUrl = 'http://13.126.121.91:4002/'
+    public messagesServiceUrl = 'http://13.126.121.91:4003/messages'
     public subscribersArray : []
     public isSubscribed = new EventEmitter();
     isAuthenticated: EventEmitter<Boolean> = new EventEmitter<Boolean>()
@@ -90,7 +91,7 @@ export class CoreService {
         }
           const token = localStorage.getItem('token')
         const headers = new HttpHeaders().set('x-access-token',token)
-    
+
        if(token && id && this.selfType ) {
           return this._http.get(`${this.messagesServiceUrl}/${id}`,{headers})
        }
@@ -102,12 +103,12 @@ export class CoreService {
         const type =  localStorage.getItem('TYPE')
         const token = localStorage.getItem('token')
         const headers = new HttpHeaders().set('x-access-token',token)
-        let data 
+        let data
         if(type == 'CALF') {
             data = {
                 from: id,
                 to: this.cow_id,
-                message: m , 
+                message: m ,
                 type : type
             }
         }else {
@@ -119,7 +120,7 @@ export class CoreService {
             }
         }
         JSON.stringify(data)
-        
+
         if(id && token){
             this._http.post(`${this.messagesServiceUrl}/message/cow`, data, {headers}).subscribe((val)=>{
             }, (e)=>{
@@ -283,6 +284,6 @@ export class CoreService {
     public  getSubscribersInfo(id:string) : Observable<any>{
         let headers =  new HttpHeaders().set('x-access-token',localStorage.getItem('token'))
         return  this._http.get(`${this.globalValidationServerUrl}/CALF/${id}`, {headers})
-        
+
     }
 }

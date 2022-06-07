@@ -1,5 +1,5 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {CoreService} from "../../shared/core.service";
+import {CoreService} from "../../services/core.service";
 
 @Component({
   selector: 'app-cows',

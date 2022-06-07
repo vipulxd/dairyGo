@@ -1,5 +1,5 @@
 import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
-import {CoreService} from "../../../shared/core.service";
+import {CoreService} from "../../../services/core.service";
 
 @Component({
   selector: 'app-chat-view',
@@ -24,7 +24,7 @@ public isProcessing : boolean = true
 
     ngOnChanges(changes: SimpleChanges) {
         this.filteredChats = []
-        
+
         if( changes.chats.previousValue) {
             if (changes.chats.previousValue.length >= changes.chats.currentValue.length) {
                 changes.chats.previousValue.map(item => {
@@ -42,11 +42,11 @@ public isProcessing : boolean = true
                 })
                 this.isProcessing = false;
             }
-        
-        
+
+
     }
-  
- 
+
+
 }
 interface MESSAGE {
     from : string,
